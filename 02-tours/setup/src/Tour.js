@@ -5,14 +5,14 @@ const Tour = ({ tour, removeTour }) => {
 
   return (
     <article className="single-tour">
-      <img src={tour.image} />
+      <img src={tour.image} alt='tour img'/>
       <footer>
         <div className="tour-info">
           <h4>{tour.name}</h4>
           <h4 className="tour-price">${tour.price}</h4>
         </div>
         <p>
-          {seeMore ? tour.info : tour.info.slice(0, 200)}
+          {seeMore ? tour.info : tour.info.slice(0, 200)+'...'}
           <button onClick={() => setSeeMore(!seeMore)}>
             {seeMore ? "see less" : "read more"}
           </button>

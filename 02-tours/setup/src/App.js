@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   function removeTour(id) {
-    let newTours = tours.filter((t) => t.id != id);
+    let newTours = tours.filter((t) => t.id !== id);
     setTours(newTours);
   }
 
