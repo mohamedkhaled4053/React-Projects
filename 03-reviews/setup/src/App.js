@@ -4,9 +4,9 @@ function App() {
   return (
     <main>
       <section className="container">
-        <div class="title">
+        <div className="title">
           <h2>our reviews</h2>
-          <div class="underline"></div>
+          <div className="underline"></div>
         </div>
 
         <Review />
