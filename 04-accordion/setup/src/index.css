@@ -211,3 +211,7 @@ main {
   align-self: center;
   min-width: 2rem;
 }
+
+::-webkit-scrollbar{
+  display: none;
+}
