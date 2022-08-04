@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 
-const Tour = ({ tour, tours, setTours }) => {
+const Tour = ({ tour, removeTour }) => {
     let [seeMore, setSeeMore] = useState(false)
-
-    function removeTour(id) {
-      let newTours = tours.filter(t=> t.id != id)
-      setTours(newTours)
-    }
 
   return (
     <article className="single-tour">

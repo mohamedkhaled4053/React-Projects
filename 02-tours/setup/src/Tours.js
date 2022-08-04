@@ -2,7 +2,7 @@ import React from "react";
 import Tour from "./Tour";
 import "./index.css";
 
-const Tours = ({ tours, setTours }) => {
+const Tours = ({ tours, removeTour }) => {
   return (
     <section>
       <div className = 'title'>
@@ -11,7 +11,7 @@ const Tours = ({ tours, setTours }) => {
       </div>
       <div>
       {tours.map((tour) => (
-        <Tour key={tour.id} tours={tours} tour={tour} setTours={setTours}/>
+        <Tour key={tour.id}  tour={tour} removeTour={removeTour}/>
       ))}
       </div>
     </section>

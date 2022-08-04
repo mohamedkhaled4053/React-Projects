@@ -14,9 +14,14 @@ function App() {
       .then((res) => setTours(res));
   }, []);
 
+  function removeTour(id) {
+    let newTours = tours.filter(t=> t.id != id)
+    setTours(newTours)
+  }
+
   return (
     <main>
-      {!tours ? <Loading /> : <Tours tours={tours} setTours={setTours} />}
+      {!tours ? <Loading /> : <Tours tours={tours} removeTour={removeTour} />}
     </main>
   );
 }
