@@ -15,7 +15,9 @@ function App() {
   }, []);
 
   return (
-    <>{!tours ? <Loading /> : <Tours tours={tours} setTours={setTours} />}</>
+    <main>
+      {!tours ? <Loading /> : <Tours tours={tours} setTours={setTours} />}
+    </main>
   );
 }
 
