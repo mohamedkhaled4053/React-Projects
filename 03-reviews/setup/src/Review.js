@@ -9,8 +9,12 @@ const Review = () => {
   let { name, job, image, text } = user;
 
   function randomIndex() {
-    let randomIndex = Math.round(Math.random() * (people.length - 1));
-    setIndex(randomIndex);
+    let newIndex = Math.floor(Math.random() * people.length);
+    if (newIndex === index) {
+      randomIndex()
+    } else {
+      setIndex(newIndex);
+    }
   }
 
   function next() {
@@ -24,7 +28,7 @@ const Review = () => {
     if (index === 0) {
       setIndex(people.length - 1);
     } else {
-      setIndex(index-1);
+      setIndex(index - 1);
     }
   }
 
