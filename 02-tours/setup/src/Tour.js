@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 
 const Tour = ({ tour, tours, setTours }) => {
+    let [seeMore, setSeeMore] = useState(false)
+
+
   return (
     <article className="single-tour">
       <img src='https://dl.airtable.com/.attachments/a0cd0702c443f31526267f38ea5314a1/2447eb7a/paris.jpg' />
       <footer>
         <div className="tour-info">
-          <h4>Best of Paris in 7 Days Tour</h4>
-          <h4 className="tour-price">$1,995</h4>
+          <h4>{tour.name}</h4>
+          <h4 className="tour-price">${tour.price}</h4>
         </div>
         <p>
-          Paris is synonymous with the finest things that culture can offer — in
-          art, fashion, food, literature, and ideas. On this tour, your
-          Paris-savvy Rick Steves guide will immerse you in the very best of ...
-          <button> read more</button>
+          {seeMore? tour.info: tour.info.slice(0,200)}
+          <button onClick={()=> setSeeMore(!seeMore)}> 
+          {seeMore?'see less':'read more'}
+          </button>
         </p>
-        <button className="delete-btn">not interested</button>
+        <button className="delete-btn" >not interested</button>
       </footer>
     </article>
   );
