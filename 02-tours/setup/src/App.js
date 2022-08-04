@@ -10,18 +10,18 @@ function App() {
   let [tours, setTours] = useState([]);
   let [loading, setLoading] = useState(true);
 
-  function getData(){
-    setLoading(true)
+  function getData() {
+    setLoading(true);
     fetch(url)
-    .then((res) => res.json())
-    .then((res) => {
-      setTours(res);
-      setLoading(false);
-    });
+      .then((res) => res.json())
+      .then((res) => {
+        setTours(res);
+        setLoading(false);
+      });
   }
 
   useEffect(() => {
-    getData()
+    getData();
   }, []);
 
   function removeTour(id) {
@@ -31,7 +31,13 @@ function App() {
 
   return (
     <main>
-      {loading ? <Loading /> : (tours.length !== 0)?<Tours tours={tours} removeTour={removeTour} />: <Refresh getData={getData}/>}
+      {loading ? (
+        <Loading />
+      ) : tours.length !== 0 ? (
+        <Tours tours={tours} removeTour={removeTour} />
+      ) : (
+        <Refresh getData={getData} />
+      )}
     </main>
   );
 }

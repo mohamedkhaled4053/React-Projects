@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Tour = ({ tour, removeTour }) => {
-    let [seeMore, setSeeMore] = useState(false)
+  let [seeMore, setSeeMore] = useState(false);
 
   return (
     <article className="single-tour">
@@ -12,12 +12,14 @@ const Tour = ({ tour, removeTour }) => {
           <h4 className="tour-price">${tour.price}</h4>
         </div>
         <p>
-          {seeMore? tour.info: tour.info.slice(0,200)}
-          <button onClick={()=> setSeeMore(!seeMore)}> 
-          {seeMore?'see less':'read more'}
+          {seeMore ? tour.info : tour.info.slice(0, 200)}
+          <button onClick={() => setSeeMore(!seeMore)}>
+            {seeMore ? "see less" : "read more"}
           </button>
         </p>
-        <button className="delete-btn" onClick={()=>removeTour(tour.id)}>not interested</button>
+        <button className="delete-btn" onClick={() => removeTour(tour.id)}>
+          not interested
+        </button>
       </footer>
     </article>
   );
