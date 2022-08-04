@@ -3,10 +3,14 @@ import React, { useState } from "react";
 const Tour = ({ tour, tours, setTours }) => {
     let [seeMore, setSeeMore] = useState(false)
 
+    function removeTour(id) {
+      let newTours = tours.filter(t=> t.id != id)
+      setTours(newTours)
+    }
 
   return (
     <article className="single-tour">
-      <img src='https://dl.airtable.com/.attachments/a0cd0702c443f31526267f38ea5314a1/2447eb7a/paris.jpg' />
+      <img src={tour.image} />
       <footer>
         <div className="tour-info">
           <h4>{tour.name}</h4>
@@ -18,7 +22,7 @@ const Tour = ({ tour, tours, setTours }) => {
           {seeMore?'see less':'read more'}
           </button>
         </p>
-        <button className="delete-btn" >not interested</button>
+        <button className="delete-btn" onClick={()=>removeTour(tour.id)}>not interested</button>
       </footer>
     </article>
   );
