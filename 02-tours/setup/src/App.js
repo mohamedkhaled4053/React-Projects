@@ -10,14 +10,20 @@ function App() {
   let [tours, setTours] = useState([]);
   let [loading, setLoading] = useState(true);
 
-  function getData() {
+ async function getData() {
     setLoading(true);
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        setTours(res);
-        setLoading(false);
-      });
+    
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     setTours(res);
+    //     setLoading(false);
+    //   });
+
+    let res = await fetch(url)
+    res = await res.json()
+    setTours(res)
+    setLoading(false)
   }
 
   useEffect(() => {
