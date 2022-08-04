@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-const Question = ({ title, info }) => {
+const Question = ({id, title, info }) => {
   let [show, setShow] = useState(false);
+
+  useEffect(()=>{
+    let paragraph = document.getElementById(id)
+    paragraph.style.maxHeight = (show)? paragraph.scrollHeight+'px' : '0'
+  })
+
   return (
     <article className="question">
       <header>
@@ -11,7 +17,7 @@ const Question = ({ title, info }) => {
           {show ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>
-      {show && <p>{info}</p>}
+      { <p style={{transition: '0.4s', overflow:'hidden'}} id={id}>{info}</p>}
     </article>
   );
 };
