@@ -7,9 +7,9 @@ function App() {
   return (
     <main>
       <div className="container">
-        <div class="title">
+        <div className="title">
           <h2>our menu</h2>
-          <div class="underline"></div>
+          <div className="underline"></div>
         </div>
 
         <Categories items={items}/>
