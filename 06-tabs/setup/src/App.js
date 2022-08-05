@@ -18,7 +18,15 @@ function App() {
         <h2>experience</h2>
         <div className="underline"></div>
       </div>
-
+      <div className="job-center">
+        <div class="btn-container">
+          {users.map((user) => (
+            <button key={user.id} class="job-btn false">
+              {user.company}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <button type="button" className="btn">
         more info
