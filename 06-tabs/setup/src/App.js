@@ -17,6 +17,7 @@ function App() {
         setLoading(false);
       });
   }, []);
+  
   if (loading) {
     return (
       <section className="section loading">
@@ -24,6 +25,8 @@ function App() {
       </section>
     );
   }
+
+  let {title, company, dates, duties} = currentUser
   return (
     <section className="section">
       <div className="title">
@@ -44,12 +47,12 @@ function App() {
             </button>
           ))}
         </div>
-
+        
         <article className="job-info">
-          <h3>{currentUser.title}</h3>
-          <h4>{currentUser.company}</h4>
-          <p className="job-date">{currentUser.dates}</p>
-          {currentUser.duties.map((duty, index) => (
+          <h3>{title}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{dates}</p>
+          {duties.map((duty, index) => (
             <div key={index} className="job-desc">
               <FaAngleDoubleRight />
               <p>{duty}</p>
