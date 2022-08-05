@@ -1,6 +1,6 @@
 import React from "react";
 
-const Categories = ({ items }) => {
+const Categories = ({ items, setShowen }) => {
   // get categories then get unique categories
   let Categories = items.map((item) => item.category);
   Categories = [...new Set(Categories)];
@@ -11,7 +11,12 @@ const Categories = ({ items }) => {
         all
       </button>
       {Categories.map((category) => (
-        <button key={category} type="button" className="filter-btn">
+        <button
+          key={category}
+          type="button"
+          className="filter-btn"
+          onClick={() => setShowen(category)}
+        >
           {category}
         </button>
       ))}

@@ -4,6 +4,8 @@ import Categories from "./Categories";
 import items from "./data";
 
 function App() {
+  let [showen, setShowen] = useState("all");
+
   return (
     <main>
       <div className="container">
@@ -12,8 +14,8 @@ function App() {
           <div className="underline"></div>
         </div>
 
-        <Categories items={items}/>
-        <Menu items={items}/>
+        <Categories items={items} setShowen={setShowen} />
+        <Menu items={items} showen={showen} />
       </div>
     </main>
   );

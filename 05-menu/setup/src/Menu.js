@@ -1,21 +1,25 @@
 import React from "react";
 
-const Menu = ({items}) => {
+const Menu = ({items, showen}) => {
+  if (showen !== 'all') {
+    items = items.filter(item => item.category === showen)
+  }
+
   return (
-    <div class="section-center">
+    <div className="section-center">
       {items.map((item) => (
-        <article class="menu-item">
+        <article key={item.id} className="menu-item">
           <img
             src={item.img}
             alt={item.title}
-            class="photo"
+            className="photo"
           />
-          <div class="item-info">
+          <div className="item-info">
             <header>
               <h4>{item.title}</h4>
-              <h4 class="price">{item.price}</h4>
+              <h4 className="price">{item.price}</h4>
             </header>
-            <p class="item-text">
+            <p className="item-text">
               {item.desc}
             </p>
           </div>
