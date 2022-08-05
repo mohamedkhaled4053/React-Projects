@@ -13,7 +13,7 @@ function App() {
       .then((res) => res.json())
       .then((res) => {
         setUsers(res);
-        setCurrentUser(res[0].company);
+        setCurrentUser(res[0]);
         setLoading(false);
       });
   }, []);
@@ -30,20 +30,34 @@ function App() {
         <h2>experience</h2>
         <div className="underline"></div>
       </div>
-      <div className="job-center">
+      <div className="jobs-center">
         <div class="btn-container">
           {users.map((user) => (
             <button
               key={user.id}
               class={`job-btn ${
-                currentUser === user.company ? "active-btn" : "false"
+                currentUser.company === user.company ? "active-btn" : "false"
               }`}
-              onClick={() => setCurrentUser(user.company)}
+              onClick={() => setCurrentUser(user)}
             >
               {user.company}
             </button>
           ))}
         </div>
+
+        <article class="job-info">
+          <h3>{currentUser.title}</h3>
+          <h4>{currentUser.company}</h4>
+          <p class="job-date">{currentUser.dates}</p>
+          {currentUser.duties.map((duty) => (
+            <div class="job-desc">
+              <FaAngleDoubleRight />
+              <p>
+                {duty}
+              </p>
+            </div>
+          ))}
+        </article>
       </div>
 
       <button type="button" className="btn">
