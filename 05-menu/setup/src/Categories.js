@@ -11,7 +11,7 @@ const Categories = ({ items }) => {
         all
       </button>
       {Categories.map((category) => (
-        <button type="button" className="filter-btn">
+        <button key={category} type="button" className="filter-btn">
           {category}
         </button>
       ))}
