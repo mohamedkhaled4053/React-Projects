@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { FaQuoteRight } from "react-icons/fa";
-import data from "./data";
+import people from "./data";
 function App() {
+  let [index, setIndex] = useState(0);
+
+  function next() {
+    if (index === people.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
+  }
+  function prev() {
+    if (index === 0) {
+      setIndex(people.length - 1);
+    } else {
+      setIndex(index - 1);
+    }
+  }
+
+
   return (
     <section className="section">
       <div className="title">
@@ -12,7 +30,7 @@ function App() {
       </div>
 
       <div className="section-center">
-      {data.map((user) => (
+      {people.map((user) => (
         <article>
           <img
             src={user.image}
