@@ -20,6 +20,14 @@ function App() {
     }
   }
 
+  
+  useEffect(()=>{
+    let timer = setInterval(next,5000)
+    return ()=>{
+      clearInterval(timer)
+    }
+  })
+
   return (
     <section className="section">
       <div className="title">
@@ -31,6 +39,7 @@ function App() {
       <div className="section-center">
         {people.map((user, i) => (
           <article
+            key={user.id}
             className={
               index === i
                 ? "activeSlide"
