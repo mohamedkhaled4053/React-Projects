@@ -19,8 +19,8 @@ function App() {
   }, []);
   if (loading) {
     return (
-      <section className="section">
-        <h1 style={{ textAlign: "center" }}>Loading...</h1>
+      <section className="section loading">
+        <h1>Loading...</h1>
       </section>
     );
   }
@@ -31,11 +31,11 @@ function App() {
         <div className="underline"></div>
       </div>
       <div className="jobs-center">
-        <div class="btn-container">
+        <div className="btn-container">
           {users.map((user) => (
             <button
               key={user.id}
-              class={`job-btn ${
+              className={`job-btn ${
                 currentUser.company === user.company ? "active-btn" : "false"
               }`}
               onClick={() => setCurrentUser(user)}
@@ -45,16 +45,14 @@ function App() {
           ))}
         </div>
 
-        <article class="job-info">
+        <article className="job-info">
           <h3>{currentUser.title}</h3>
           <h4>{currentUser.company}</h4>
-          <p class="job-date">{currentUser.dates}</p>
-          {currentUser.duties.map((duty) => (
-            <div class="job-desc">
+          <p className="job-date">{currentUser.dates}</p>
+          {currentUser.duties.map((duty, index) => (
+            <div key={index} className="job-desc">
               <FaAngleDoubleRight />
-              <p>
-                {duty}
-              </p>
+              <p>{duty}</p>
             </div>
           ))}
         </article>
