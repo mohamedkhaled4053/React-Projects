@@ -15,7 +15,7 @@ function App() {
     <section className="section-center">
       <Form list={list} setList={setList}/>
 
-      <List list={list} />
+      <List list={list} setList={setList}/>
 
       <Alert />
     </section>
