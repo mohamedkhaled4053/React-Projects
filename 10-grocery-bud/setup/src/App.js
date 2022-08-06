@@ -3,6 +3,8 @@ import List from "./List";
 import Alert from "./Alert";
 
 function App() {
+  let [list, setList] = useState(['2'])
+  
   return (
     <section className="section-center">
       <form className="grocery-form">
@@ -16,8 +18,8 @@ function App() {
       </form>
 
 
-      <List />
-
+      <List list={list}/>
+      
       <Alert />
     </section>
   );
