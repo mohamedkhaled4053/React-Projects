@@ -6,7 +6,7 @@ function App() {
   let [num, setNum] = useState(1);
 
   function handleChange(e) {
-    let value = e.target.value
+    let value = parseInt(e.target.value)
     if (value < 1) {
       setNum(1);
     }else if(value > 8){
