@@ -6,7 +6,7 @@ const List = ({ list, setList }) => {
     <div className="grocery-container">
       <div className="grocery-list">
         {list.map((item, index) => (
-          <Item key={index} title={item} list={list} setList={setList} />
+          <Item key={index} index={index} title={item} list={list} setList={setList} />
         ))}
       </div>
       <button className="clear-btn" onClick={() => setList([])}>
