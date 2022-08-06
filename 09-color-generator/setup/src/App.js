@@ -39,7 +39,7 @@ function App() {
 
       <section className="colors">
         {list.map((color, index) => (
-          <SingleColor key={index} {...color} />
+          <SingleColor key={index} hex={color.hexString()} weight={color.weight} type={color.type} />
         ))}
       </section>
     </>

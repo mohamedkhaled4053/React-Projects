@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import rgbToHex from "./utils";
 
-const SingleColor = ({ rgb, weight, type }) => {
+const SingleColor = ({ weight, type, hex }) => {
   let [isClicked, setIsClicked] = useState(false);
 
   function handleClick(e) {
     setIsClicked(true);
-    let value = rgbToHex(...rgb);
-    navigator.clipboard.writeText(value);
+    navigator.clipboard.writeText(hex);
   }
 
   useEffect(() => {
@@ -24,10 +22,10 @@ const SingleColor = ({ rgb, weight, type }) => {
     <article
       onClick={handleClick}
       className={`color ${type === "shade" && "color-light"}`}
-      style={{ backgroundColor: `${rgbToHex(...rgb)}` }}
+      style={{ backgroundColor: `${hex}` }}
     >
       <p className="percent-value">{weight}%</p>
-      <p className="color-value">{rgbToHex(...rgb)}</p>
+      <p className="color-value">{hex}</p>
 
       {isClicked && <p className="alert">copied to clipboard</p>}
     </article>
