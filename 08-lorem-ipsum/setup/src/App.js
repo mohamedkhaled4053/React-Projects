@@ -3,19 +3,22 @@ import data from "./data";
 
 function App() {
   let [lorems, setLorems] = useState([]);
-  let [num, setNum] = useState(0);
+  let [num, setNum] = useState(1);
 
   function handleChange(e) {
-    setNum(e.target.value);
+    let value = e.target.value
+    if (value < 1) {
+      setNum(1);
+    }else if(value > 8){
+      setNum(8)
+    } else {
+      setNum(value);
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(num >=1){
-      setLorems(data.slice(0, num));
-    }else{
-      setLorems(data.slice(0,1))
-    }
+    setLorems(data.slice(0, num));
   }
 
   return (
