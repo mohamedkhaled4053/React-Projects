@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export function Form({ list, setList }) {
+export function Form({ list, setList, isEdit, editedItem ,setIsEdit}) {
   let [newItem, setNewItem] = useState('');
+
+  useEffect(()=>{
+    if(isEdit){
+      let input = document.querySelector('input')
+      input.focus()
+      setNewItem(list[editedItem])
+    }
+  },[isEdit])
 
   function handleSubmit(e) {
     e.preventDefault();
-    setList([...list, newItem]);
+    if (!isEdit) {
+      setList([...list, newItem]);
+    } else {
+      let newList = [...list]
+      newList.splice(editedItem,1,newItem)
+      setList(newList)
+      setIsEdit(false)
+    }
     setNewItem('');
   }
 
@@ -20,7 +35,7 @@ export function Form({ list, setList }) {
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)} />
         <button type="submit" className="submit-btn">
-          submit
+          {(isEdit)?'edit': 'submit'}
         </button>
       </div>
     </form>
