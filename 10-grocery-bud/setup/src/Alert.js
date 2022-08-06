@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
 const Alert = () => {
-  return <p className="alert alert-danger">item removed</p>
-}
+  return <p className="alert alert-danger">item removed</p>;
+};
 
-export default Alert
+export default Alert;

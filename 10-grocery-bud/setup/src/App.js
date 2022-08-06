@@ -6,16 +6,16 @@ import { Form } from "./Form";
 function App() {
   let [list, setList] = useState(["2"]);
 
-  function addNewItem(event,newItem) {
-    event.preventDefault()
-    setList([...list, newItem])
+  function addNewItem(event, newItem) {
+    event.preventDefault();
+    setList([...list, newItem]);
   }
 
   return (
     <section className="section-center">
-      <Form list={list} setList={setList}/>
+      <Form list={list} setList={setList} />
 
-      <List list={list} setList={setList}/>
+      <List list={list} setList={setList} />
 
       <Alert />
     </section>
