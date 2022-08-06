@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
 import List from "./List";
 import Alert from "./Alert";
+import { Form } from "./Form";
 
 function App() {
-  let [list, setList] = useState(['2'])
-  
+  let [list, setList] = useState(["2"]);
+
+  function addNewItem(event,newItem) {
+    event.preventDefault()
+    setList([...list, newItem])
+  }
+
   return (
     <section className="section-center">
-      <form className="grocery-form">
-        <h3>grocery bud</h3>
-        <div className="form-control">
-          <input type="text" className="grocery" placeholder="e.g. eggs" value="" />
-          <button type="submit" className="submit-btn">
-            submit
-          </button>
-        </div>
-      </form>
+      <Form list={list} setList={setList}/>
 
+      <List list={list} />
 
-      <List list={list}/>
-      
       <Alert />
     </section>
   );
