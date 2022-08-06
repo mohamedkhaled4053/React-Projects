@@ -5,14 +5,25 @@ import { Form } from "./Form";
 
 function App() {
   let [list, setList] = useState(["2"]);
-  let [isEdit, setIsEdit] = useState(false)
-  let [editedItem, setEditedItem] = useState(null)
+  let [isEdit, setIsEdit] = useState(false);
+  let [editedItem, setEditedItem] = useState(null);
 
   return (
     <section className="section-center">
-      <Form list={list} setList={setList} isEdit={isEdit} editedItem={editedItem} setIsEdit={setIsEdit}/>
+      <Form
+        list={list}
+        setList={setList}
+        isEdit={isEdit}
+        editedItem={editedItem}
+        setIsEdit={setIsEdit}
+      />
 
-      <List list={list} setList={setList} setIsEdit={setIsEdit} setEditedItem={setEditedItem}/>
+      <List
+        list={list}
+        setList={setList}
+        setIsEdit={setIsEdit}
+        setEditedItem={setEditedItem}
+      />
 
       <Alert />
     </section>

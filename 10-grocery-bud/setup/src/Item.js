@@ -1,17 +1,23 @@
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-export function Item({ title, list, setList, index, setIsEdit, setEditedItem}) {
-
+export function Item({
+  title,
+  list,
+  setList,
+  index,
+  setIsEdit,
+  setEditedItem,
+}) {
   function deleteItem() {
-    let newList = [...list]
-    newList.splice(index,1)
-    setList(newList)
+    let newList = [...list];
+    newList.splice(index, 1);
+    setList(newList);
   }
 
   function handleEdit() {
-    setIsEdit(true)
-    setEditedItem(index)
+    setIsEdit(true);
+    setEditedItem(index);
   }
 
   return (

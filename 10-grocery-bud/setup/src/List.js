@@ -6,7 +6,15 @@ const List = ({ list, setList, setIsEdit, setEditedItem }) => {
     <div className="grocery-container">
       <div className="grocery-list">
         {list.map((item, index) => (
-          <Item key={index} index={index} title={item} list={list} setList={setList} setIsEdit={setIsEdit} setEditedItem={setEditedItem}/>
+          <Item
+            key={index}
+            index={index}
+            title={item}
+            list={list}
+            setList={setList}
+            setIsEdit={setIsEdit}
+            setEditedItem={setEditedItem}
+          />
         ))}
       </div>
       <button className="clear-btn" onClick={() => setList([])}>
