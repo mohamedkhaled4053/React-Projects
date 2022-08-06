@@ -5,24 +5,24 @@ const SingleColor = ({ rgb, weight, type }) => {
   let [isClicked, setIsClicked] = useState(false);
 
   function handleClick(e) {
-    setIsClicked(true)
-    let value = rgbToHex(...rgb)
-    navigator.clipboard.writeText(value)
+    setIsClicked(true);
+    let value = rgbToHex(...rgb);
+    navigator.clipboard.writeText(value);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     let timer = setTimeout(() => {
-      setIsClicked(false)
+      setIsClicked(false);
     }, 2000);
 
-    return ()=>{
-      clearTimeout(timer)
-    }
-
-  })
+    return () => {
+      clearTimeout(timer);
+    };
+  });
 
   return (
-    <article onClick={handleClick}
+    <article
+      onClick={handleClick}
       className={`color ${type === "shade" && "color-light"}`}
       style={{ backgroundColor: `${rgbToHex(...rgb)}` }}
     >
