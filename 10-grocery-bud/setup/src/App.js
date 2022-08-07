@@ -74,7 +74,7 @@ function App() {
     return () => {
       clearTimeout(timer);
     };
-  });
+  },[list, alert]);
 
   // store list in locale storage when changed
   useEffect(() => {
