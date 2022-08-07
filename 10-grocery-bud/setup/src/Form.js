@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-export function Form({ list, setList, isEdit, editedItem, setIsEdit }) {
+export function Form({
+  list,
+  setList,
+  isEdit,
+  editedItem,
+  setIsEdit,
+  setAlert,
+  alertValues,
+}) {
   let [newItem, setNewItem] = useState("");
 
   useEffect(() => {
@@ -13,15 +21,21 @@ export function Form({ list, setList, isEdit, editedItem, setIsEdit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!isEdit) {
-      setList([...list, newItem]);
+    if (newItem.trim()) {
+      if (!isEdit) {
+        setList([...list, newItem]);
+        setAlert(alertValues.add);
+      } else {
+        let newList = [...list];
+        newList.splice(editedItem, 1, newItem);
+        setList(newList);
+        setIsEdit(false);
+        setAlert(alertValues.edit)
+      }
+      setNewItem("");
     } else {
-      let newList = [...list];
-      newList.splice(editedItem, 1, newItem);
-      setList(newList);
-      setIsEdit(false);
+      setAlert(alertValues.noInput)
     }
-    setNewItem("");
   }
 
   return (

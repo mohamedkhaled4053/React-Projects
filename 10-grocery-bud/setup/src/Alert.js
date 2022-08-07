@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
 
-const Alert = () => {
-  return <p className="alert alert-danger">item removed</p>;
+const Alert = ({alert, alertValues}) => {
+  let alertClass
+  if(alert===alertValues.add || alert === alertValues.edit){
+    alertClass = 'alert-success'
+  }else{
+    alertClass = 'alert-danger'
+  }
+
+
+  return <p className={`alert ${alertClass}`}>
+      {alert}
+    </p>;
 };
 
 export default Alert;
