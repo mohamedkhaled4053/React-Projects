@@ -17,15 +17,15 @@ function App() {
     noInput: "Please Enter Value",
   };
 
-  // useEffect(() => {
-  //   let timer = setTimeout(() => {
-  //     setAlert(null);
-  //   }, 1000);
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setAlert(null);
+    }, 3000);
 
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // },[alert]);
+    return () => {
+      clearTimeout(timer);
+    };
+  });
 
   return (
     <section className="section-center">
@@ -44,6 +44,8 @@ function App() {
         setList={setList}
         setIsEdit={setIsEdit}
         setEditedItem={setEditedItem}
+        setAlert={setAlert}
+        alertValues={alertValues}
       />
 
       {alert && <Alert alert={alert} alertValues={alertValues} />}

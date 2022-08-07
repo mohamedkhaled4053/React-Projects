@@ -8,11 +8,14 @@ export function Item({
   index,
   setIsEdit,
   setEditedItem,
+  setAlert,
+  alertValues
 }) {
   function deleteItem() {
     let newList = [...list];
     newList.splice(index, 1);
     setList(newList);
+    setAlert(alertValues.remove)
   }
 
   function handleEdit() {
