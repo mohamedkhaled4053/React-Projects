@@ -3,17 +3,10 @@ import { Item } from "./Item";
 
 const List = ({
   list,
-  setList,
-  setIsEdit,
-  setEditedItem,
-  setAlert,
-  alertValues,
+  clear,
+  handleEdit,
+  deleteItem
 }) => {
-  let clear = () => {
-    setList([]);
-    setAlert(alertValues.clear);
-  };
-
   return (
     <div className="grocery-container">
       <div className="grocery-list">
@@ -22,12 +15,8 @@ const List = ({
             key={index}
             index={index}
             title={item}
-            list={list}
-            setList={setList}
-            setIsEdit={setIsEdit}
-            setEditedItem={setEditedItem}
-            setAlert={setAlert}
-            alertValues={alertValues}
+            handleEdit={handleEdit}
+            deleteItem={deleteItem}
           />
         ))}
       </div>
