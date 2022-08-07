@@ -7,7 +7,6 @@ function App() {
   // states
   let [list, setList] = useState(
     JSON.parse(localStorage.getItem("list")) || ["2"]);
-  let [newItem, setNewItem] = useState("");
   let [isEdit, setIsEdit] = useState(false);
   let [editedItem, setEditedItem] = useState(null);
   let [alert, setAlert] = useState(null);
@@ -22,7 +21,7 @@ function App() {
   };
 
   // functions
-  function handleSubmit(e) {
+  function handleSubmit(e, newItem) {
     e.preventDefault();
     if (newItem.trim()) {
       if (!isEdit) {
@@ -35,7 +34,6 @@ function App() {
         setIsEdit(false);
         setAlert(alertValues.edit);
       }
-      setNewItem("");
     } else {
       setAlert(alertValues.noInput);
     }
@@ -59,13 +57,6 @@ function App() {
   };
 
   // effects
-  useEffect(() => {
-    if (isEdit) {
-      let input = document.querySelector("input");
-      input.focus();
-      setNewItem(list[editedItem]);
-    }
-  }, [isEdit, list, editedItem]);
 
   useEffect(() => {
     let timer = setTimeout(() => {
@@ -86,9 +77,9 @@ function App() {
     <section className="section-center">
       <Form
         isEdit={isEdit}
-        newItem={newItem}
-        setNewItem={setNewItem}
         handleSubmit={handleSubmit}
+        list={list}
+        editedItem={editedItem}
       />
 
       <List

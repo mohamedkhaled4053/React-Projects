@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
-export function Form({ isEdit, newItem, setNewItem, handleSubmit }) {
+export function Form({ isEdit, handleSubmit , list, editedItem}) {
+  let [newItem, setNewItem] = useState("");
+
+  useEffect(() => {
+    if (isEdit) {
+      let input = document.querySelector("input");
+      input.focus();
+      setNewItem(list[editedItem]);
+    }
+  }, [isEdit, list, editedItem]);
   return (
-    <form className="grocery-form" onSubmit={(e) => handleSubmit(e)}>
+    <form className="grocery-form" onSubmit={(e) => {handleSubmit(e, newItem)
+      setNewItem("");
+    }}>
       <h3>grocery bud</h3>
       <div className="form-control">
         <input
