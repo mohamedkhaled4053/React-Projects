@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-export function Form({ isEdit, handleSubmit , list, editedItem}) {
+export function Form({ isEdit, handleSubmit, list, editedItem }) {
   let [newItem, setNewItem] = useState("");
 
+  // in edit mode focus in input and dispaly the value of targeted item
   useEffect(() => {
     if (isEdit) {
       let input = document.querySelector("input");
@@ -10,10 +11,15 @@ export function Form({ isEdit, handleSubmit , list, editedItem}) {
       setNewItem(list[editedItem]);
     }
   }, [isEdit, list, editedItem]);
+
   return (
-    <form className="grocery-form" onSubmit={(e) => {handleSubmit(e, newItem)
-      setNewItem("");
-    }}>
+    <form
+      className="grocery-form"
+      onSubmit={(e) => {
+        handleSubmit(e, newItem);
+        setNewItem("");
+      }}
+    >
       <h3>grocery bud</h3>
       <div className="form-control">
         <input
