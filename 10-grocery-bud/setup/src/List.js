@@ -1,12 +1,7 @@
 import React from "react";
 import { Item } from "./Item";
 
-const List = ({
-  list,
-  clear,
-  handleEdit,
-  deleteItem
-}) => {
+const List = ({ list, clear, handleEdit, deleteItem }) => {
   return (
     <div className="grocery-container">
       <div className="grocery-list">

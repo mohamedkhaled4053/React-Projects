@@ -1,14 +1,8 @@
 import React from "react";
 
-export function Form({
-  isEdit,
-  newItem,
-  setNewItem,
-  handleSubmit
-}) {
-
+export function Form({ isEdit, newItem, setNewItem, handleSubmit }) {
   return (
-    <form className="grocery-form" onSubmit={(e)=>handleSubmit(e)}>
+    <form className="grocery-form" onSubmit={(e) => handleSubmit(e)}>
       <h3>grocery bud</h3>
       <div className="form-control">
         <input

@@ -10,7 +10,7 @@ function App() {
   let [isEdit, setIsEdit] = useState(false);
   let [editedItem, setEditedItem] = useState(null);
   let [alert, setAlert] = useState(null);
-  
+
   // variables
   let alertValues = {
     add: "Item Added To The List",
@@ -64,7 +64,7 @@ function App() {
       input.focus();
       setNewItem(list[editedItem]);
     }
-  }, [isEdit]);
+  }, [isEdit, list, editedItem]);
 
   useEffect(() => {
     let timer = setTimeout(() => {
