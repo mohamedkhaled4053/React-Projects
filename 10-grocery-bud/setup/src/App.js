@@ -5,7 +5,8 @@ import { Form } from "./Form";
 
 function App() {
   // states
-  let [list, setList] = useState(["2"]);
+  let [list, setList] = useState(
+    JSON.parse(localStorage.getItem("list")) || ["2"]);
   let [newItem, setNewItem] = useState("");
   let [isEdit, setIsEdit] = useState(false);
   let [editedItem, setEditedItem] = useState(null);
@@ -74,6 +75,10 @@ function App() {
     return () => {
       clearTimeout(timer);
     };
+  });
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
   });
 
   // JSX
