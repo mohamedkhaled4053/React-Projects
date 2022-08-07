@@ -9,13 +9,13 @@ export function Item({
   setIsEdit,
   setEditedItem,
   setAlert,
-  alertValues
+  alertValues,
 }) {
   function deleteItem() {
     let newList = [...list];
     newList.splice(index, 1);
     setList(newList);
-    setAlert(alertValues.remove)
+    setAlert(alertValues.remove);
   }
 
   function handleEdit() {

@@ -30,11 +30,11 @@ export function Form({
         newList.splice(editedItem, 1, newItem);
         setList(newList);
         setIsEdit(false);
-        setAlert(alertValues.edit)
+        setAlert(alertValues.edit);
       }
       setNewItem("");
     } else {
-      setAlert(alertValues.noInput)
+      setAlert(alertValues.noInput);
     }
   }
 
