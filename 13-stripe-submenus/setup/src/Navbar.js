@@ -18,7 +18,7 @@ const Navbar = () => {
           {sublinks.map((sublink) => (
             <li
               key={sublink.page}
-              onMouseEnter={() => showSubmenuCont(sublink)}
+              onMouseEnter={(e) => showSubmenuCont(sublink, e.target)}
               onMouseLeave={() => hideSubmenuCont()}
             >
               <button className="link-btn">{sublink.page}</button>

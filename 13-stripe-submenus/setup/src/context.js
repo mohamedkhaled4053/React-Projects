@@ -5,14 +5,20 @@ let appContext = React.createContext();
 
 function AppProvider({ children }) {
   let [showSidebar, setShowSidebar] = useState(false);
-  let [submenuCont, setSubmenuCont] = useState({ show: false, cont: sublinks[0] });
+  let [submenuCont, setSubmenuCont] = useState({
+    show: false,
+    cont: sublinks[0],
+    position: 0,
+  });
 
   function toggleSidebar() {
     setShowSidebar(!showSidebar);
   }
 
-  function showSubmenuCont(cont) {
-    setSubmenuCont({ show: true, cont });
+  function showSubmenuCont(cont, target) {
+    let {left, width} = target.getBoundingClientRect()
+    let position = left + width /2
+    setSubmenuCont({ show: true, cont, position });
   }
 
   function hideSubmenuCont() {
