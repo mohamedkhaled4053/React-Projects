@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-
+        dispatch
       }}
     >
       {children}
