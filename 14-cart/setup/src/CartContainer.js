@@ -4,6 +4,11 @@ import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart, dispatch } = useGlobalContext()
+  let totalPrice = 0
+  cart.forEach(item => {
+    totalPrice += item.price * item.amount
+  });
+
   if (cart.length === 0) {
     return (
       <section className='cart'>
@@ -32,7 +37,7 @@ const CartContainer = () => {
         <hr />
         <div className='cart-total'>
           <h4>
-            total <span>$0.00</span>
+            total <span>${totalPrice.toFixed(2)}</span>
           </h4>
         </div>
         <button
