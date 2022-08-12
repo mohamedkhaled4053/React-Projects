@@ -1,9 +1,12 @@
 import React from "react";
+import { useGlobalContext } from "./context";
 import phoneImg from "./images/phone.svg";
 
 const Hero = () => {
+  let {hideSubmenuCont} = useGlobalContext()
+
   return (
-    <section className="hero">
+    <section className="hero" onMouseEnter={hideSubmenuCont}>
       <div className="hero-center">
         <article className="hero-info">
           <h1>
