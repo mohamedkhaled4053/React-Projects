@@ -4,9 +4,16 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-  let { sublinks, toggleSidebar, showSubmenuCont } = useGlobalContext();
+  let { sublinks, toggleSidebar, showSubmenuCont, hideSubmenuCont } = useGlobalContext();
+
+  function handleHover(e){
+    if (!e.target.classList.contains('link-btn')) {
+      hideSubmenuCont()
+    }
+  }
+
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={handleHover}>
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} className="nav-logo" alt="logo" />
