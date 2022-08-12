@@ -4,7 +4,7 @@ import { useGlobalContext } from "./context";
 import sublinks from "./data";
 
 const Sidebar = () => {
-  let { sublinks, showSidebar, toggleSidebar } = useGlobalContext();
+  let { showSidebar, toggleSidebar } = useGlobalContext();
 
   return (
     <div className={`sidebar-wrapper ${showSidebar && 'show'}`}>

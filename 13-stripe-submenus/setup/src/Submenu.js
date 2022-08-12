@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { useGlobalContext } from "./context";
 
 const Submenu = () => {
@@ -15,7 +15,7 @@ const Submenu = () => {
         <h4>{page}</h4>
         <div className={`submenu-center col-${links.length}`}>
           {links.map(({ url, label, icon }) => (
-            <a href={url}>
+            <a key={label} href={url}>
               {icon}
               {label}
             </a>

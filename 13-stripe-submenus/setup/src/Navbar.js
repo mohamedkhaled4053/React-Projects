@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-  let { sublinks, toggleSidebar, showSubmenuCont, hideSubmenuCont } = useGlobalContext();
+  let { sublinks, toggleSidebar, showSubmenuCont } = useGlobalContext();
   return (
     <nav className="nav">
       <div className="nav-center">
