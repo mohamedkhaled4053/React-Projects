@@ -16,7 +16,7 @@ const Submenu = () => {
     >
       <section>
         <h4>{page}</h4>
-        <div className={`submenu-center col-${links.length}`}>
+        <div className={`submenu-center col-${links.length > 4? '4':links.length}`}>
           {links.map(({ url, label, icon }) => (
             <a key={label} href={url}>
               {icon}
