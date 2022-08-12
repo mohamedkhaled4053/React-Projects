@@ -6,6 +6,9 @@ export default function reducer(state, action) {
     let newCart = state.cart.filter((item) => item.id !== action.payload);
     return { ...state, cart: newCart };
 
+  } else if (action.type === "CLEAR") {
+    return { ...state, cart: [] };
+
   } else if (action.type === "INCREASE") {
     let newCart = state.cart.map((item) => {
       if (item.id === action.payload) {
@@ -14,7 +17,6 @@ export default function reducer(state, action) {
         return item;
       }
     });
-
     return { ...state, cart: newCart };
 
   } else if (action.type === "DECREASE") {
@@ -25,7 +27,6 @@ export default function reducer(state, action) {
       let newCart = state.cart.filter((item) => item.id !== action.payload);
       return { ...state, cart: newCart };
     }
-
     // if the amount is more than one then decrease it
     let newCart = state.cart.map((item) => {
       if (item.id === action.payload) {
