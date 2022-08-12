@@ -4,21 +4,40 @@ import sublinks from "./data";
 let appContext = React.createContext();
 
 function AppProvider({ children }) {
-    let [links, setLinsks] = useState(sublinks)
-    let [showSidebar, setShowSidebar] = useState(false)
-    let [showSubmenu, setShowSubmenu] = useState(false)
+  let [links, setLinsks] = useState(sublinks);
+  let [showSidebar, setShowSidebar] = useState(false);
+  let [submenuCont, setSubmenuCont] = useState({ show: false, cont: sublinks[0] });
 
-    function toggleSidebar() {
-        setShowSidebar(!showSidebar)
-    }
+  function toggleSidebar() {
+    setShowSidebar(!showSidebar);
+  }
 
-  return <appContext.Provider value={{links, showSidebar,showSubmenu, toggleSidebar}}>
-        {children}
-    </appContext.Provider>;
+  function showSubmenuCont(cont) {
+    setSubmenuCont({ show: true, cont });
+  }
+
+  function hideSubmenuCont() {
+    setSubmenuCont({ ...submenuCont, show: false });
+  }
+
+  return (
+    <appContext.Provider
+      value={{
+        links,
+        showSidebar,
+        submenuCont,
+        toggleSidebar,
+        showSubmenuCont,
+        hideSubmenuCont,
+      }}
+    >
+      {children}
+    </appContext.Provider>
+  );
 }
 
-function useGlobalContext(){
-    return useContext(appContext)
+function useGlobalContext() {
+  return useContext(appContext);
 }
 
 export { useGlobalContext, AppProvider };
