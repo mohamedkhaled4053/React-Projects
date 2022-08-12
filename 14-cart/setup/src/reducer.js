@@ -37,4 +37,5 @@ export default function reducer(state, action) {
     });
     return { ...state, cart: newCart };
   }
+  throw Error ('no matching action type')
 }
