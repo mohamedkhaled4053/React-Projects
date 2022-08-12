@@ -8,11 +8,20 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const [cart, setCart] = useState(cartItems)
+  let [loading, setLoading] = useState(true)
+
+  useEffect(()=>{
+    fetch(url).then(res=>res.json()).then(res=> {
+      setCart(res)
+      setLoading(false)
+    })
+  },[])
 
   return (
     <AppContext.Provider
       value={{
         cart,
+        loading
       }}
     >
       {children}
