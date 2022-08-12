@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-  let { pages, toggleSidebar, showSubmenuCont, hideSubmenuCont } = useGlobalContext();
+  let { sublinks, toggleSidebar, showSubmenuCont, hideSubmenuCont } = useGlobalContext();
   return (
     <nav className="nav">
       <div className="nav-center">
@@ -15,13 +15,13 @@ const Navbar = () => {
           </button>
         </div>
         <ul className="nav-links">
-          {pages.map((page) => (
+          {sublinks.map((sublink) => (
             <li
-              key={page.page}
-              onMouseEnter={() => showSubmenuCont(page)}
+              key={sublink.page}
+              onMouseEnter={() => showSubmenuCont(sublink)}
               onMouseLeave={() => hideSubmenuCont()}
             >
-              <button className="link-btn">{page.page}</button>
+              <button className="link-btn">{sublink.page}</button>
             </li>
           ))}
         </ul>

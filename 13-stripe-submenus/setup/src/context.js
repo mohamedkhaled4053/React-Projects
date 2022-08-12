@@ -4,7 +4,6 @@ import sublinks from "./data";
 let appContext = React.createContext();
 
 function AppProvider({ children }) {
-  let [pages, setLinsks] = useState(sublinks);
   let [showSidebar, setShowSidebar] = useState(false);
   let [submenuCont, setSubmenuCont] = useState({ show: false, cont: sublinks[0] });
 
@@ -23,7 +22,7 @@ function AppProvider({ children }) {
   return (
     <appContext.Provider
       value={{
-        pages,
+        sublinks,
         showSidebar,
         submenuCont,
         toggleSidebar,

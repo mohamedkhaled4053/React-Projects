@@ -4,7 +4,7 @@ import { useGlobalContext } from "./context";
 import sublinks from "./data";
 
 const Sidebar = () => {
-  let { pages, showSidebar, toggleSidebar } = useGlobalContext();
+  let { sublinks, showSidebar, toggleSidebar } = useGlobalContext();
 
   return (
     <div className={`sidebar-wrapper ${showSidebar && 'show'}`}>
@@ -13,7 +13,7 @@ const Sidebar = () => {
           <FaTimes />
         </button>
         <div className="sidebar-links">
-          {pages.map(({ page, links }) => (
+          {sublinks.map(({ page, links }) => (
             <article key={page}>
               <h4>{page}</h4>
               <div className="sidebar-sublinks">
