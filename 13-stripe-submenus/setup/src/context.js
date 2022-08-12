@@ -5,8 +5,14 @@ let appContext = React.createContext();
 
 function AppProvider({ children }) {
     let [links, setLinsks] = useState(sublinks)
+    let [showSidebar, setShowSidebar] = useState(false)
+    let [showSubmenu, setShowSubmenu] = useState(false)
 
-  return <appContext.Provider value={{links}}>
+    function toggleSidebar() {
+        setShowSidebar(!showSidebar)
+    }
+
+  return <appContext.Provider value={{links, showSidebar,showSubmenu, toggleSidebar}}>
         {children}
     </appContext.Provider>;
 }

@@ -4,21 +4,21 @@ import { useGlobalContext } from "./context";
 import sublinks from "./data";
 
 const Sidebar = () => {
-  let { links } = useGlobalContext();
+  let { links, showSidebar, toggleSidebar } = useGlobalContext();
 
   return (
-    <div className="sidebar-wrapper">
+    <div className={`sidebar-wrapper ${showSidebar && 'show'}`}>
       <aside className="sidebar">
-        <button className="close-btn">
+        <button className="close-btn" onClick={toggleSidebar}>
           <FaTimes />
         </button>
         <div className="sidebar-links">
           {links.map(({ page, links }) => (
-            <article>
+            <article key={page}>
               <h4>{page}</h4>
               <div className="sidebar-sublinks">
                 {links.map(({label, icon ,url}) => (
-                  <a href={url}>
+                  <a key={label} href={url}>
                     {icon}
                     {label}
                   </a>

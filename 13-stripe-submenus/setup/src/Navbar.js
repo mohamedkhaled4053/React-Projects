@@ -4,19 +4,19 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-  let { links } = useGlobalContext();
+  let { links, toggleSidebar } = useGlobalContext();
   return (
     <nav className="nav">
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} className="nav-logo" alt="" />
-          <button className="btn toggle-btn">
+          <button className="btn toggle-btn" onClick={toggleSidebar}>
             <FaBars />
           </button>
         </div>
         <ul className="nav-links">
           {links.map((link) => (
-            <li>
+            <li key={link.page}>
               <button className="link-btn">{link.page}</button>
             </li>
           ))}
