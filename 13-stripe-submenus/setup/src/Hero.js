@@ -3,7 +3,7 @@ import { useGlobalContext } from "./context";
 import phoneImg from "./images/phone.svg";
 
 const Hero = () => {
-  let {hideSubmenuCont} = useGlobalContext()
+  let { hideSubmenuCont } = useGlobalContext();
 
   return (
     <section className="hero" onMouseEnter={hideSubmenuCont}>
@@ -21,11 +21,7 @@ const Hero = () => {
           <button className="btn">Start now</button>
         </article>
         <article className="hero-images">
-          <img
-            src={phoneImg}
-            className="phone-img"
-            alt="phone"
-          />
+          <img src={phoneImg} className="phone-img" alt="phone" />
         </article>
       </div>
     </section>

@@ -7,7 +7,7 @@ const Sidebar = () => {
   let { showSidebar, toggleSidebar } = useGlobalContext();
 
   return (
-    <div className={`sidebar-wrapper ${showSidebar && 'show'}`}>
+    <div className={`sidebar-wrapper ${showSidebar && "show"}`}>
       <aside className="sidebar">
         <button className="close-btn" onClick={toggleSidebar}>
           <FaTimes />
@@ -17,7 +17,7 @@ const Sidebar = () => {
             <article key={page}>
               <h4>{page}</h4>
               <div className="sidebar-sublinks">
-                {links.map(({label, icon ,url}) => (
+                {links.map(({ label, icon, url }) => (
                   <a key={label} href={url}>
                     {icon}
                     {label}

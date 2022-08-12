@@ -16,8 +16,8 @@ function AppProvider({ children }) {
   }
 
   function showSubmenuCont(cont, target) {
-    let {left, width} = target.getBoundingClientRect()
-    let position = left + width /2
+    let { left, width } = target.getBoundingClientRect();
+    let position = left + width / 2;
     setSubmenuCont({ show: true, cont, position });
   }
 

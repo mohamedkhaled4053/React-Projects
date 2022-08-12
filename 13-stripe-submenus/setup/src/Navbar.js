@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="nav">
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} className="nav-logo" alt="" />
+          <img src={logo} className="nav-logo" alt="logo" />
           <button className="btn toggle-btn" onClick={toggleSidebar}>
             <FaBars />
           </button>

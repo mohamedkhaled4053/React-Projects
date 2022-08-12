@@ -6,11 +6,14 @@ const Submenu = () => {
   let {
     show,
     cont: { page, links },
-    position
+    position,
   } = submenuCont;
 
   return (
-    <aside className={`submenu ${show && "show"}`} style={{left: position +'px'}}>
+    <aside
+      className={`submenu ${show && "show"}`}
+      style={{ left: position + "px" }}
+    >
       <section>
         <h4>{page}</h4>
         <div className={`submenu-center col-${links.length}`}>
