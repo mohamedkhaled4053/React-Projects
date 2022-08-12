@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Modal from './Modal'
 import Sidebar from './Sidebar'
 import Home from './Home'
+import context from './context'
+
+
 function App() {
+  let [showModal, setShowModal] =useState(false)
+  let [showSidebar, setShowSidebar] =useState(false)
+
+  function toggleSidebar() {
+    setShowSidebar(!showSidebar)
+  }
+  
+  function toggleModal() {
+    setShowModal(!showModal)
+  }
+
   return (
-    <>
-      <h2>modal-sidebar project setup</h2>
-    </>
+    <context.Provider value={{toggleModal, toggleSidebar, showModal, showSidebar}}>
+      <Home />
+      <Sidebar />
+      <Modal />
+    </context.Provider>
   )
 }
 

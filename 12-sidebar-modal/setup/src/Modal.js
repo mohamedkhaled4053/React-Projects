@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaTimes } from "react-icons/fa";
+import context from "./context";
+
 const Modal = () => {
+  let {toggleModal, showModal} = useContext(context)
+
   return (
-    <div class="modal-overlay show-modal">
-      <div class="modal-container">
+    <div className={`modal-overlay ${showModal && 'show-modal'}`}>
+      <div className="modal-container">
         <h3>modal content</h3>
-        <button class="close-modal-btn">
+        <button className="close-modal-btn" onClick={toggleModal}>
           <FaTimes />
         </button>
       </div>

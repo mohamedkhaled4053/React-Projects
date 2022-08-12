@@ -1,35 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./logo.svg";
 import { FaTimes } from "react-icons/fa";
 import { social, links } from "./data";
+import context from "./context";
 
 const Sidebar = () => {
+  let { toggleSidebar, showSidebar } = useContext(context);
+
   return (
-    <aside class="sidebar show-sidebar">
-      <div class="sidebar-header">
+    <aside className={`sidebar ${showSidebar&&'show-sidebar'}`}>
+      <div className="sidebar-header">
         <img
-          src="/static/media/logo.2bb7da65.svg"
-          class="logo"
+          src={logo}
+          className="logo"
           alt="coding addict"
         />
-        <button class="close-btn">
+        <button className="close-btn" onClick={toggleSidebar}>
           <FaTimes />
         </button>
       </div>
-      <ul class="links">
-        <li>
-          <a href="/">
-            {/* {icon here} */}
-            home
-          </a>
-        </li>
+      <ul className="links">
+        {links.map(({ id, url, text, icon }) => (
+          <li key={id}>
+            <a href={url}>
+              {icon}
+              {text}
+            </a>
+          </li>
+        ))}
       </ul>
-      <ul class="social-icons">
-        <li>
-          <a href="https://www.twitter.com">
-            {/* {icon here} */}
-          </a>
-        </li>
+      <ul className="social-icons">
+        {social.map(({id, url, icon}) => (
+          <li key={id}>
+            <a href={url}>{icon}</a>
+          </li>
+        ))}
       </ul>
     </aside>
   );
