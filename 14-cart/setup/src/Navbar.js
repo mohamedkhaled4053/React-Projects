@@ -2,10 +2,12 @@ import React from 'react'
 import { useGlobalContext } from './context'
 const Navbar = () => {
   let {cart} = useGlobalContext()
-  let totalAmount = 0
-  cart.forEach(item => {
-    totalAmount += item.amount
-  });
+  // let totalAmount = 0
+  // cart.forEach(item => {
+  //   totalAmount += item.amount
+  // });
+
+  let totalAmount = cart.reduce((total, item)=> total + item.amount, 0)
   return (
     <nav>
       <div className='nav-center'>

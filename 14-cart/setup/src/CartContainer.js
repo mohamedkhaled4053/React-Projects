@@ -4,11 +4,12 @@ import { useGlobalContext } from './context'
 
 const CartContainer = () => {
   const { cart, dispatch } = useGlobalContext()
-  let totalPrice = 0
-  cart.forEach(item => {
-    totalPrice += item.price * item.amount
-  });
+  // let totalPrice = 0
+  // cart.forEach(item => {
+  //   totalPrice += item.price * item.amount
+  // });
 
+  let totalPrice = cart.reduce((total, item)=>total+ item.price*item.amount, 0)
   if (cart.length === 0) {
     return (
       <section className='cart'>
