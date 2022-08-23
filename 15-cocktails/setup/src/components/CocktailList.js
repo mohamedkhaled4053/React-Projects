@@ -10,6 +10,14 @@ const CocktailList = () => {
     return <Loading />;
   }
 
+  if (!drinks) {
+    return (
+      <h2 className="section-title">
+        no cocktails matched your search criteria
+      </h2>
+    );
+  }
+
   return (
     <section className="section">
       <h2 className="section-title">cocktails</h2>
