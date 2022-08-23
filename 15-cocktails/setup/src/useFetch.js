@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 
 function useFetch(url, query) {
+    // setup states
     let [loading, setLoading] = useState(true);
     let [drinks, setDrinks] = useState([]);
 
@@ -15,8 +16,9 @@ function useFetch(url, query) {
             setDrinks(res.drinks);
             setLoading(false);
           }
-        });
+        },[url, query]);
 
+        // clean up
         return ()=>{
           mounted = false
         }

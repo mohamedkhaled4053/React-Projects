@@ -7,6 +7,7 @@ const url = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
 const SingleCocktail = () => {
   let { id } = useParams();
+  // get the drink by the custom hook useFetch
   let { loading, drinks } = useFetch(url, id);
   let drink = drinks[0];
 
@@ -15,6 +16,9 @@ const SingleCocktail = () => {
   }
 
   let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions } = drink;
+
+  // get any value of any ingredient key
+  // then remove null values from array by filter
   let ingredients = Object.keys(drink)
     .map((key) => {
       if (key.includes('Ingredient')) {
@@ -23,8 +27,6 @@ const SingleCocktail = () => {
       return null;
     })
     .filter((ingredient) => ingredient !== null);
-
-  console.log(ingredients);
 
   return (
     <section className="section cocktail-section">
