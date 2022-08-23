@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import useFetch from './useFetch';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
