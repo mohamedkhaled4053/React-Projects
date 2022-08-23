@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../logo.svg';
 
 const Navbar = () => {
@@ -15,10 +15,10 @@ const Navbar = () => {
         </Link>
         <ul className="nav-links">
           <li>
-            <Link to="/">home</Link>
+            <NavLink style={({isActive})=> isActive?{color: 'red'}:null} to="/">home</NavLink>
           </li>
           <li>
-            <Link to="/about">about</Link>
+            <NavLink to="/about" style={({isActive})=> isActive?{color: 'red'}:null}>about</NavLink>
           </li>
         </ul>
       </div>
