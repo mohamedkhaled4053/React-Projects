@@ -5,6 +5,7 @@ function useFetch(url, query) {
     let [drinks, setDrinks] = useState([]);
 
     useEffect(() => {
+      setLoading(true)
       fetch(url + query)
         .then((res) => res.json())
         .then((res) => {

@@ -12,7 +12,7 @@ const AppProvider = ({ children }) => {
 
 
   
-  return <AppContext.Provider value={{loading, drinks}}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{loading, drinks, setQuery, query}}>{children}</AppContext.Provider>;
 };
 // make sure use
 export const useGlobalContext = () => {
