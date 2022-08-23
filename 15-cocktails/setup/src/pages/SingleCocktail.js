@@ -9,12 +9,16 @@ const SingleCocktail = () => {
   let { id } = useParams();
   // get the drink by the custom hook useFetch
   let { loading, drinks } = useFetch(url, id);
-  let drink = drinks[0];
 
   if (loading) {
     return <Loading />;
   }
 
+  if (!drinks) {
+    return <h2 class="section-title">no cocktail to display</h2>;
+  }
+
+  let drink = drinks[0];
   let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions } =
     drink;
 

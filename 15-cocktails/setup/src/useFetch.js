@@ -16,7 +16,10 @@ function useFetch(url, query) {
             setDrinks(res.drinks);
             setLoading(false);
           }
-        },[url, query]);
+        },[url, query]).catch(err => {
+          setDrinks(null)
+          setLoading(false)
+        });
 
         // clean up
         return ()=>{
