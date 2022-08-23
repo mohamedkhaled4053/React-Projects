@@ -15,7 +15,8 @@ const SingleCocktail = () => {
     return <Loading />;
   }
 
-  let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions } = drink;
+  let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions } =
+    drink;
 
   // get any value of any ingredient key
   // then remove null values from array by filter
@@ -58,7 +59,9 @@ const SingleCocktail = () => {
           <p>
             <span className="drink-data">ingredients :</span>
             {ingredients.map((ingredient) => (
-              <span key={ingredient}>{ingredient}</span>
+              <span key={ingredient} style={{ marginRight: '20px' }}>
+                {ingredient}
+              </span>
             ))}
           </p>
         </div>
