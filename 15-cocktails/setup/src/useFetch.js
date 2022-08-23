@@ -5,13 +5,21 @@ function useFetch(url, query) {
     let [drinks, setDrinks] = useState([]);
 
     useEffect(() => {
+      let mounted = true
+
       setLoading(true)
       fetch(url + query)
         .then((res) => res.json())
         .then((res) => {
-          setDrinks(res.drinks);
-          setLoading(false);
+          if (mounted) {
+            setDrinks(res.drinks);
+            setLoading(false);
+          }
         });
+
+        return ()=>{
+          mounted = false
+        }
     },[url,query]);
     return {loading, drinks}
   }
