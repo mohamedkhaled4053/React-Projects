@@ -10,20 +10,27 @@ import {
 const url = 'https://randomuser.me/api/';
 const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg';
 
-
-
 function App() {
-  let [loading, setLoading] = useState(true)
-  let [user, setUser] = useState(null)
-  let [showen, setShowen] = useState('name')
+  let [loading, setLoading] = useState(true);
+  let [user, setUser] = useState(null);
+  let [showen, setShowen] = useState('name');
 
-  function getUser(){
-    fetch(url).then(res=> res.json()).then(res => setUser(res.results))
+  function getUser() {
+    setLoading(true)
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        // get data that we need with destructuring
+        let {name, email, registered:{age}, location: {street}, phone, password } = res.results[0]
+        
+        setUser({name, email, age, street, phone, password})
+        setLoading(false)
+      });
   }
 
-  useEffect(()=>{
-    getUser()
-  },[])
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <main>
