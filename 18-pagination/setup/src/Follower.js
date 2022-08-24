@@ -1,7 +1,18 @@
-import React from 'react'
+import React from 'react';
 
 const Follower = () => {
-  return <h2>follower component</h2>
-}
+  return (
+    <article className="card">
+      <img
+        src="https://avatars.githubusercontent.com/u/3006?v=4"
+        alt="tarasis"
+      />
+      <h4>tarasis</h4>
+      <a href="https://github.com/tarasis" className="btn">
+        view profile
+      </a>
+    </article>
+  );
+};
 
-export default Follower
+export default Follower;
