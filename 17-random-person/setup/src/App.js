@@ -24,12 +24,12 @@ function App() {
         let {
           name: { first, last },
           email,
-          registered: { age },
+          dob: { age },
           location: {
             street: { number, name: streetName },
           },
           phone,
-          password,
+          login:{password},
           picture: { thumbnail: img },
         } = res.results[0];
         // get full name and full street address
@@ -38,12 +38,23 @@ function App() {
 
         setUser({ name, email, age, street, phone, password, img });
         setLoading(false);
+        setShowen('name')
       });
   }
 
   useEffect(() => {
     getUser();
   }, []);
+
+  useEffect(()=>{
+    let icons = document.querySelectorAll('.icon')
+    // icons =Array.from(icons)
+    icons.forEach(icon => {
+      icon.addEventListener('mouseenter',(e)=>{
+        setShowen(e.target.dataset.label)
+      })
+    });
+  },[])
 
   return (
     <main>
