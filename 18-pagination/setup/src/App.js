@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFetch } from './useFetch';
 import Follower from './Follower';
 function App() {
@@ -37,7 +37,7 @@ function App() {
       </div>
     );
   }
-  let a = 20;
+
   return (
     <main>
       <div className="section-title">
@@ -53,8 +53,9 @@ function App() {
         <div className="btn-container">
           <button className="prev-btn" onClick={prev}>prev</button>
 
-          {Array.from({ length: numberOfPages }, (v, i) => (
+          {Array.from({ length: numberOfPages }, (_, i) => (
             <button
+              key={i+1}
               className={`page-btn ${i + 1 === pageIndex && 'active-btn'}`}
               onClick={changePage}
             >
