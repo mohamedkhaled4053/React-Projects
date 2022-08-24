@@ -5,8 +5,9 @@ function App() {
   let { loading, data } = useFetch();
   let [pageIndex, setPageIndex] = useState(1);
 
-  let numberOfPages = Math.ceil(data.length / 10);
-  let showenData = data.slice(pageIndex * 10 - 10, pageIndex * 10);
+  let itemsPerPage = 10
+  let numberOfPages = Math.ceil(data.length / itemsPerPage);
+  let showenData = data.slice(pageIndex * itemsPerPage - itemsPerPage, pageIndex * itemsPerPage);
 
   function changePage(e) {
     setPageIndex(Number(e.target.textContent))
