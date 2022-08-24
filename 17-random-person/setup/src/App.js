@@ -9,7 +9,22 @@ import {
 } from 'react-icons/fa';
 const url = 'https://randomuser.me/api/';
 const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg';
+
+
+
 function App() {
+  let [loading, setLoading] = useState(true)
+  let [user, setUser] = useState(null)
+  let [showen, setShowen] = useState('name')
+
+  function getUser(){
+    fetch(url).then(res=> res.json()).then(res => setUser(res.results))
+  }
+
+  useEffect(()=>{
+    getUser()
+  },[])
+
   return (
     <main>
       <div className="block bcg-black"></div>
