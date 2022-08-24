@@ -23,7 +23,7 @@ function App() {
       <section className="followers">
         <div className="container">
           {data.map((follower) => (
-            <Follower key={follower.id} />
+            <Follower key={follower.id} {...follower}/>
           ))}
         </div>
         <div className="btn-container">
