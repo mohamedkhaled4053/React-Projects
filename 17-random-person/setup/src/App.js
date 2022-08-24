@@ -35,7 +35,7 @@ function App() {
         // get full name and full street address
         let name = first + ' ' + last;
         let street = number + ' ' + streetName;
-        
+
         setUser({ name, email, age, street, phone, password, img });
         setLoading(false);
       });
@@ -77,8 +77,8 @@ function App() {
               <FaLock />
             </button>
           </div>
-          <button className="btn" type="button">
-            random user
+          <button className="btn" type="button" onClick={getUser}>
+            {loading ? 'loading' : 'random user'}
           </button>
         </div>
       </div>
