@@ -41,6 +41,12 @@ function App() {
         setShowen('name')
       });
   }
+  
+  function handleClick() {
+    if(!loading){
+      getUser()
+    }
+  }
 
   useEffect(() => {
     getUser();
@@ -88,7 +94,7 @@ function App() {
               <FaLock />
             </button>
           </div>
-          <button className="btn" type="button" onClick={getUser}>
+          <button className="btn" type="button" onClick={handleClick}>
             {loading ? 'loading' : 'random user'}
           </button>
         </div>
