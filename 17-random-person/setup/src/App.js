@@ -12,19 +12,32 @@ const defaultImage = 'https://randomuser.me/api/portraits/men/75.jpg';
 
 function App() {
   let [loading, setLoading] = useState(true);
-  let [user, setUser] = useState(null);
+  let [user, setUser] = useState({ name: 'random name' });
   let [showen, setShowen] = useState('name');
 
   function getUser() {
-    setLoading(true)
+    setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
         // get data that we need with destructuring
-        let {name, email, registered:{age}, location: {street}, phone, password } = res.results[0]
+        let {
+          name: { first, last },
+          email,
+          registered: { age },
+          location: {
+            street: { number, name: streetName },
+          },
+          phone,
+          password,
+          picture: { thumbnail: img },
+        } = res.results[0];
+        // get full name and full street address
+        let name = first + ' ' + last;
+        let street = number + ' ' + streetName;
         
-        setUser({name, email, age, street, phone, password})
-        setLoading(false)
+        setUser({ name, email, age, street, phone, password, img });
+        setLoading(false);
       });
   }
 
@@ -38,12 +51,12 @@ function App() {
       <div className="block">
         <div className="container">
           <img
-            src="https://randomuser.me/api/portraits/men/72.jpg"
+            src={user.img || defaultImage}
             alt="random user"
             className="user-img"
           />
-          <p className="user-title">My age is</p>
-          <p className="user-value">60</p>
+          <p className="user-title">My {showen} is</p>
+          <p className="user-value">{user[showen]}</p>
           <div className="values-list">
             <button className="icon" data-label="name">
               <FaUser />
