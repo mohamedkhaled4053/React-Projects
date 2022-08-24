@@ -6,38 +6,38 @@ function App() {
 
   if (loading) {
     return (
-      <div class="section-title">
+      <div className="section-title">
         <h1>loading</h1>
-        <div class="underline"></div>
+        <div className="underline"></div>
       </div>
     );
   }
 
   return (
     <main>
-      <div class="section-title">
+      <div className="section-title">
         <h1>pagination</h1>
-        <div class="underline"></div>
+        <div className="underline"></div>
       </div>
-      <section class="followers">
-        <div class="container">
+      <section className="followers">
+        <div className="container">
           {data.map((follower) => (
             <Follower />
           ))}
         </div>
-        <div class="btn-container">
-          <button class="prev-btn">prev</button>
-          <button class="page-btn active-btn">1</button>
-          <button class="page-btn null">2</button>
-          <button class="page-btn null">3</button>
-          <button class="page-btn null">4</button>
-          <button class="page-btn null">5</button>
-          <button class="page-btn null">6</button>
-          <button class="page-btn null">7</button>
-          <button class="page-btn null">8</button>
-          <button class="page-btn null">9</button>
-          <button class="page-btn null">10</button>
-          <button class="next-btn">next</button>
+        <div className="btn-container">
+          <button className="prev-btn">prev</button>
+          <button className="page-btn active-btn">1</button>
+          <button className="page-btn null">2</button>
+          <button className="page-btn null">3</button>
+          <button className="page-btn null">4</button>
+          <button className="page-btn null">5</button>
+          <button className="page-btn null">6</button>
+          <button className="page-btn null">7</button>
+          <button className="page-btn null">8</button>
+          <button className="page-btn null">9</button>
+          <button className="page-btn null">10</button>
+          <button className="next-btn">next</button>
         </div>
       </section>
     </main>
