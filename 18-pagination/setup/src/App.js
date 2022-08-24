@@ -3,7 +3,10 @@ import { useFetch } from './useFetch';
 import Follower from './Follower';
 function App() {
   let { loading, data } = useFetch();
-  let numberOfPages = Math.ceil(data.length/10)
+  let [pageIndex, setPageIndex] = useState(4);
+
+  let numberOfPages = Math.ceil(data.length / 10);
+  let showenData = data.slice(pageIndex * 10 - 10, pageIndex * 10);
 
   if (loading) {
     return (
@@ -13,7 +16,7 @@ function App() {
       </div>
     );
   }
-  let a = 20
+  let a = 20;
   return (
     <main>
       <div className="section-title">
@@ -22,14 +25,17 @@ function App() {
       </div>
       <section className="followers">
         <div className="container">
-          {data.map((follower) => (
-            <Follower key={follower.id} {...follower}/>
+          {showenData.map((follower) => (
+            <Follower key={follower.id} {...follower} />
           ))}
         </div>
         <div className="btn-container">
           <button className="prev-btn">prev</button>
           {Array.from({ length: numberOfPages }, (v, i) => (
-            <button className="page-btn">{i+1}</button>
+            <button
+              className={`page-btn ${i + 1 === pageIndex && 'active-btn'}`}>
+              {i + 1}
+            </button>
           ))}
 
           <button className="next-btn">next</button>
