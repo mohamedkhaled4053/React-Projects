@@ -16,7 +16,8 @@ function App() {
 
   function isInViewport(element) {
     let rec = element.getBoundingClientRect();
-    return rec.bottom < window.innerHeight;
+    console.log(rec.top, window.innerHeight);
+    return rec.top < window.innerHeight;
   }
 
   function handleSubmit(e) {
