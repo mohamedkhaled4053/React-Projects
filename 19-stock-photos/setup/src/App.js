@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import Photo from './Photo';
 
@@ -7,12 +7,44 @@ const mainUrl = `https://api.unsplash.com/photos/`;
 const searchUrl = `https://api.unsplash.com/search/photos/`;
 
 function App() {
-  let [photos, setPhotos] = useState([])
+  let [photos, setPhotos] = useState([]);
+  // let [page, setPage] = useState(1);
+  let [loading, setLoading] = useState(true);
+  console.log(`photos ${photos.length} and loading ${loading}`);
 
-  useEffect(()=>{
-    let firstUrl = mainUrl + clientID
-    fetch(firstUrl).then(res => res.json()).then(res => setPhotos(res))
-  },[])
+  let loadingContainer = useRef(null);
+
+  function isInViewport(element) {
+    let rec = element.getBoundingClientRect();
+    return rec.bottom < window.innerHeight;
+  }
+
+  useEffect(() => {
+    let pageParam = `page=${photos.length/ 10 + 1}`;
+    let firstUrl = mainUrl + clientID + '&' + pageParam;
+    if (loading) {
+      fetch(firstUrl)
+        .then((res) => res.json())
+        .then((res) => {
+          setPhotos([...photos, ...res]);
+          setLoading(false);
+        });
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    document.addEventListener('scroll', () => {
+      if (isInViewport(loadingContainer.current)) {
+        setLoading(true)
+      }
+
+      return () => {
+        mounted = false;
+      };
+    });
+  }, []);
 
   return (
     <main>
@@ -22,7 +54,7 @@ function App() {
             type="text"
             placeholder="search"
             className="form-input"
-            value=""
+            // value=""
           />
           <button type="submit" className="submit-btn">
             <FaSearch />
@@ -31,9 +63,13 @@ function App() {
       </section>
       <section className="photos">
         <div className="photos-center">
-          {photos.map(photo => <Photo key={photo.id} {...photo}/>)}
+          {photos.map((photo) => (
+            <Photo key={photo.id} {...photo} />
+          ))}
         </div>
-        <h2 className="loading">Loading...</h2>
+        <h2 className="loading" ref={loadingContainer}>
+          Loading...
+        </h2>
       </section>
     </main>
   );
