@@ -8,24 +8,42 @@ const searchUrl = `https://api.unsplash.com/search/photos/`;
 
 function App() {
   let [photos, setPhotos] = useState([]);
-  // let [page, setPage] = useState(1);
   let [loading, setLoading] = useState(true);
-  console.log(`photos ${photos.length} and loading ${loading}`);
+  let [query, setQuery] = useState('');
 
   let loadingContainer = useRef(null);
+  let searchContainer = useRef(null);
 
   function isInViewport(element) {
     let rec = element.getBoundingClientRect();
     return rec.bottom < window.innerHeight;
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    setQuery(searchContainer.current.value);
+    setLoading(true);
+    setPhotos([]);
+  }
+
+  // effects
   useEffect(() => {
-    let pageParam = `page=${photos.length/ 10 + 1}`;
-    let firstUrl = mainUrl + clientID + '&' + pageParam;
+    let pageParam = `page=${photos.length / 10 + 1}`;
+    let url;
+
     if (loading) {
-      fetch(firstUrl)
+      if (query) {
+        let pageQuery = `query=${query}`;
+        url = searchUrl + clientID + '&' + pageParam + '&' + pageQuery;
+      } else {
+        url = mainUrl + clientID + '&' + pageParam;
+      }
+      fetch(url)
         .then((res) => res.json())
         .then((res) => {
+          if (query) {
+            res = res.results
+          }
           setPhotos([...photos, ...res]);
           setLoading(false);
         });
@@ -37,7 +55,7 @@ function App() {
 
     document.addEventListener('scroll', () => {
       if (isInViewport(loadingContainer.current)) {
-        setLoading(true)
+        setLoading(true);
       }
 
       return () => {
@@ -49,12 +67,12 @@ function App() {
   return (
     <main>
       <section className="search">
-        <form className="search-form">
+        <form className="search-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="search"
             className="form-input"
-            // value=""
+            ref={searchContainer}
           />
           <button type="submit" className="submit-btn">
             <FaSearch />
