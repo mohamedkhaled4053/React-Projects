@@ -16,7 +16,6 @@ function App() {
 
   function isInViewport(element) {
     let rec = element.getBoundingClientRect();
-    console.log(rec.top, window.innerHeight);
     return rec.top < window.innerHeight;
   }
 
@@ -52,16 +51,10 @@ function App() {
   }, [loading]);
 
   useEffect(() => {
-    let mounted = true;
-
     document.addEventListener('scroll', () => {
       if (isInViewport(loadingContainer.current)) {
         setLoading(true);
       }
-
-      return () => {
-        mounted = false;
-      };
     });
   }, []);
 
