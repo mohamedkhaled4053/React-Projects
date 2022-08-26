@@ -7,19 +7,24 @@ const mainUrl = `https://api.unsplash.com/photos/`;
 const searchUrl = `https://api.unsplash.com/search/photos/`;
 
 function App() {
+  // states
   let [photos, setPhotos] = useState([]);
   let [loading, setLoading] = useState(true);
   let [query, setQuery] = useState('');
 
+  // refs
   let loadingContainer = useRef(null);
   let searchContainer = useRef(null);
 
+  // helper functions
   function isInViewport(element) {
     let rec = element.getBoundingClientRect();
     return rec.top < window.innerHeight;
   }
 
   function handleSubmit(e) {
+    // when searching setQuery to searched text
+    // and clear photos and begin loading
     e.preventDefault();
     setQuery(searchContainer.current.value);
     setLoading(true);
@@ -31,7 +36,9 @@ function App() {
     let pageParam = `page=${photos.length / 10 + 1}`;
     let url;
 
+    // only get new photos in loading state
     if (loading) {
+      // if query use search link and if not use main link
       if (query) {
         let pageQuery = `query=${query}`;
         url = searchUrl + clientID + '&' + pageParam + '&' + pageQuery;
@@ -41,6 +48,7 @@ function App() {
       fetch(url)
         .then((res) => res.json())
         .then((res) => {
+          // search link response is different from main link response
           if (query) {
             res = res.results
           }
@@ -51,6 +59,7 @@ function App() {
   }, [loading]);
 
   useEffect(() => {
+    // begin loading new photos if loading element in viewport
     document.addEventListener('scroll', () => {
       if (isInViewport(loadingContainer.current)) {
         setLoading(true);
