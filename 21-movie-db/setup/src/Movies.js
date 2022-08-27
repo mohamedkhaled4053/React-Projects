@@ -1,23 +1,33 @@
 import React from 'react';
 import { useGlobalContext } from './context';
 import { Link } from 'react-router-dom';
-const url =
+const noImg =
   'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png';
 
 const Movies = () => {
+  let { loading, movies } = useGlobalContext();
+
+  if (loading) {
+    return <div className="loading"></div>;
+  }
+
   return (
-    <Link class="movie" to="/movies/tt0372784">
-      <article>
-        <img
-          src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-          alt="Batman Begins"
-        />
-        <div class="movie-info">
-          <h4 class="title">Batman Begins</h4>
-          <p>2005</p>
-        </div>
-      </article>
-    </Link>
+    <section className="movies">
+      {movies.map(({imdbID: Id,Title, Year, Type ,Poster}) => (
+        <Link key={Id} className="movie" to={`/movies/${Id}`}>
+          <article>
+            <img
+              src={Poster || noImg}
+              alt={Title}
+            />
+            <div className="movie-info">
+              <h4 className="title">{Title}</h4>
+              <p>{Year}</p>
+            </div>
+          </article>
+        </Link>
+      ))}
+    </section>
   );
 };
 

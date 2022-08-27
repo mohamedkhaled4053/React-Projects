@@ -15,7 +15,8 @@ const AppProvider = ({ children }) => {
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);
-        setMovies(res.search);
+        console.log(res.Search);
+        setMovies(res.Search);
       });
   }, query);
 
