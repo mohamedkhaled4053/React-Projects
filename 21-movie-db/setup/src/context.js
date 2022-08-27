@@ -7,22 +7,30 @@ const AppProvider = ({ children }) => {
   let [loading, setLoading] = useState(true);
   let [movies, setMovies] = useState([]);
   let [query, setQuery] = useState('batman');
-  let [error, setError] = useState('')
+  let [error, setError] = useState('');
 
   useEffect(() => {
+    let mounted = true;
+
     let url = API_ENDPOINT + `&s=${query}`;
     setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
-        if (res.Search) {
-          setMovies(res.Search)
-          setError('')
-        }else{
-          setError(res.Error)
+        if (mounted) {
+          setLoading(false);
+          if (res.Search) {
+            setMovies(res.Search);
+            setError('');
+          } else {
+            setError(res.Error);
+          }
         }
-      })
+      });
+
+    return () => {
+      mounted = false;
+    };
   }, [query]);
 
   return (

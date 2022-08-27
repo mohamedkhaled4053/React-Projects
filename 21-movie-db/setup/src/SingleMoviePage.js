@@ -12,12 +12,20 @@ const SingleMovie = () => {
     'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png';
 
   useEffect(() => {
+    let mounted = true;
+
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
-        setMovie(res);
+        if (mounted) {
+          setLoading(false);
+          setMovie(res);
+        }
       });
+
+    return () => {
+      mounted = false;
+    };
   });
 
   if (loading) {
