@@ -6,7 +6,7 @@ const url =
 
 const Movies = () => {
   return (
-    <a class="movie" href="/movies/tt0372784">
+    <Link class="movie" to="/movies/tt0372784">
       <article>
         <img
           src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
@@ -17,7 +17,7 @@ const Movies = () => {
           <p>2005</p>
         </div>
       </article>
-    </a>
+    </Link>
   );
 };
 
