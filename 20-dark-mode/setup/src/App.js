@@ -3,15 +3,21 @@ import data from './data';
 import Article from './Article';
 
 function App() {
+  let [dark, setDark] = useState(true)
+  
+  useEffect(()=>{
+    document.body.className = dark? 'dark-theme':'light-theme'
+  })
+
   return (
     <main>
       <nav>
-        <div class="nav-center">
+        <div className="nav-center">
           <h1>overreacted</h1>
-          <button class="btn">toggle</button>
+          <button className="btn" onClick={()=>setDark(!dark)}>toggle</button>
         </div>
       </nav>
-      <section class="articles">
+      <section className="articles">
         {data.map(article => <Article key={article.id} {...article}/>)}
       </section>
     </main>
