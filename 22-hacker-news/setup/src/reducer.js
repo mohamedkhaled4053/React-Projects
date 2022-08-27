@@ -6,5 +6,7 @@ import {
   HANDLE_SEARCH,
 } from './actions'
 
-const reducer = () => {}
+const reducer = (state, action) => {
+  
+}
 export default reducer
