@@ -26,6 +26,8 @@ const reducer = (state, action) => {
     } else if (action.payload === 'next') {
       return { ...state, page: state.page + 1 };
     }
+  } else if (action.type === HANDLE_SEARCH) {
+    return {...state , query : action.payload, page: 0}
   }
 };
 export default reducer;

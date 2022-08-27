@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
         dispatch({type: SET_STORIES, payload: res})
         dispatch({type: SET_LOADING, payload: false})
       });
-  }, [ state.page]);
+  }, [state.query, state.page]);
 
   return (
     <AppContext.Provider value={{ ...state, dispatch }}>
