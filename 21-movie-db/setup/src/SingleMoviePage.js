@@ -3,19 +3,35 @@ import { useParams, Link } from 'react-router-dom';
 import { API_ENDPOINT } from './context';
 
 const SingleMovie = () => {
+  let [loading, setLoading] = useState(true);
+  let [movie, setMovie] = useState({});
+
+  let { id } = useParams();
+  let url = API_ENDPOINT + `&i=${id}`;
+  const noImg =
+    'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png';
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        setLoading(false);
+        setMovie(res);
+      });
+  });
+
+  if (loading) {
+    return <div className="loading"></div>;
+  }
+
+  let { Title, Plot, Year, Poster } = movie;
   return (
     <section className="single-movie">
-      <img
-        src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-        alt="Batman Begins"
-      />
+      <img src={Poster || noImg} alt={Title} />
       <div className="single-movie-info">
-        <h2>Batman Begins</h2>
-        <p>
-          After training with his mentor, Batman begins his fight to free
-          crime-ridden Gotham City from corruption.
-        </p>
-        <h4>2005</h4>
+        <h2>{Title}</h2>
+        <p>{Plot}</p>
+        <h4>{Year}</h4>
         <Link className="btn" to="/">
           back to movies
         </Link>
