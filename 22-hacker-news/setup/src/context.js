@@ -20,15 +20,23 @@ const AppProvider = ({ children }) => {
   console.log(state);
 
   useEffect(() => {
+    let mounted = true
+
     let url = API_ENDPOINT + `query=${state.query}&page=${state.page}`;
 
     dispatch({type: SET_LOADING, payload: true})
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        dispatch({type: SET_STORIES, payload: res})
-        dispatch({type: SET_LOADING, payload: false})
+        if (mounted) {
+          dispatch({type: SET_STORIES, payload: res})
+          dispatch({type: SET_LOADING, payload: false})
+        }
       });
+
+      return ()=>{
+        mounted = false
+      }
   }, [state.query, state.page]);
 
   return (
