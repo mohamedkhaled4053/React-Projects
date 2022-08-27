@@ -3,7 +3,7 @@ import React from 'react';
 import { useGlobalContext } from './context';
 
 const Stories = () => {
-  let { loading, articles } = useGlobalContext();
+  let { loading, articles, dispatch } = useGlobalContext();
 
   if (loading) {
     return <div className="loading"></div>;
@@ -11,7 +11,7 @@ const Stories = () => {
 
   return (
     <section className="stories">
-      {articles.map(({title, url, author, points, num_comments}) => (
+      {articles.map(({objectID: id,title, url, author, points, num_comments}) => (
         <article className="story">
           <h4 className="title">{title}</h4>
           <p className="info">
@@ -26,7 +26,7 @@ const Stories = () => {
             >
               read more
             </a>
-            <button className="remove-btn">remove</button>
+            <button className="remove-btn" onClick={()=> dispatch({type: 'REMOVE_STORY', payload:id})}>remove</button>
           </div>
         </article>
       ))}
