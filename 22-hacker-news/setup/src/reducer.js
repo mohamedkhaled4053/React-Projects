@@ -21,13 +21,24 @@ const reducer = (state, action) => {
     );
     return { ...state, articles: newArticles };
   } else if (action.type === HANDLE_PAGE) {
+    let newpage;
     if (action.payload === 'prev') {
-      return { ...state, page: state.page - 1 };
+      if (state.page === 0) {
+        newpage = state.totalPages - 1;
+      } else {
+        newpage = state.page - 1;
+      }
+      return { ...state, page: newpage };
     } else if (action.payload === 'next') {
-      return { ...state, page: state.page + 1 };
+      if (state.page === state.totalPages -1) {
+        newpage = 0
+      } else {
+        newpage = state.page + 1;
+      }
+      return { ...state, page: newpage };
     }
   } else if (action.type === HANDLE_SEARCH) {
-    return {...state , query : action.payload, page: 0}
+    return { ...state, query: action.payload, page: 0 };
   }
 };
 export default reducer;
