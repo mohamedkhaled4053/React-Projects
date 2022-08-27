@@ -14,6 +14,7 @@ const reducer = (state, action) => {
       ...state,
       articles: action.payload.hits,
       totalPages: action.payload.nbPages,
+      loading: false
     };
   } else if (action.type === REMOVE_STORY) {
     let newArticles = state.articles.filter(
@@ -30,8 +31,8 @@ const reducer = (state, action) => {
       }
       return { ...state, page: newpage };
     } else if (action.payload === 'next') {
-      if (state.page === state.totalPages -1) {
-        newpage = 0
+      if (state.page === state.totalPages - 1) {
+        newpage = 0;
       } else {
         newpage = state.page + 1;
       }
