@@ -4,9 +4,13 @@ import {
   REMOVE_STORY,
   HANDLE_PAGE,
   HANDLE_SEARCH,
-} from './actions'
+} from './actions';
 
 const reducer = (state, action) => {
-  
-}
-export default reducer
+  if (action.type === SET_LOADING) {
+    return{...state, loading: action.payload}
+  } else if(action.type === SET_STORIES) {
+    return {...state, articles: action.payload}
+  }
+};
+export default reducer;
