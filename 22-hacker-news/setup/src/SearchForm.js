@@ -5,7 +5,7 @@ const SearchForm = () => {
   return (
     <form className="search-form">
       <h2>search hacker news</h2>
-      <input type="text" className="form-input" value="react" />
+      <input type="text" className="form-input" />
     </form>
   );
 };
