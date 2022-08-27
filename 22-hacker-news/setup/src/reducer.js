@@ -14,7 +14,7 @@ const reducer = (state, action) => {
       ...state,
       articles: action.payload.hits,
       totalPages: action.payload.nbPages,
-      loading: false
+      loading: false,
     };
   } else if (action.type === REMOVE_STORY) {
     let newArticles = state.articles.filter(
@@ -40,6 +40,8 @@ const reducer = (state, action) => {
     }
   } else if (action.type === HANDLE_SEARCH) {
     return { ...state, query: action.payload, page: 0 };
+  } else {
+    throw new Error (`no matching action type to ${action.type}`)
   }
 };
 export default reducer;
