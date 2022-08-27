@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   let [loading, setLoading] = useState(true);
   let [movies, setMovies] = useState([]);
   let [query, setQuery] = useState('batman');
+  let [error, setError] = useState('')
 
   useEffect(() => {
     let url = API_ENDPOINT + `&s=${query}`;
@@ -15,13 +16,17 @@ const AppProvider = ({ children }) => {
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);
-        console.log(res.Search);
-        setMovies(res.Search);
-      });
-  }, query);
+        if (res.Search) {
+          setMovies(res.Search)
+          setError('')
+        }else{
+          setError(res.Error)
+        }
+      })
+  }, [query]);
 
   return (
-    <AppContext.Provider value={{ loading, movies, query }}>
+    <AppContext.Provider value={{ loading, movies, query, setQuery, error }}>
       {children}
     </AppContext.Provider>
   );
