@@ -6,7 +6,7 @@ function App() {
   let [dark, setDark] = useState(true)
   
   useEffect(()=>{
-    document.body.className = dark? 'dark-theme':'light-theme'
+    document.documentElement.className = dark? 'dark-theme':'light-theme'
   })
 
   return (
