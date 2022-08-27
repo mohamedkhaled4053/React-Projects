@@ -35,7 +35,7 @@ const SingleMovie = () => {
   let { Title, Plot, Year, Poster } = movie;
   return (
     <section className="single-movie">
-      <img src={Poster || noImg} alt={Title} />
+      <img src={Poster !== 'N/A'? Poster : noImg} alt={Title} />
       <div className="single-movie-info">
         <h2>{Title}</h2>
         <p>{Plot}</p>
