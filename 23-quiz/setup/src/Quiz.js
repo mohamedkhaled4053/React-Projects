@@ -59,7 +59,7 @@ function Quiz(params) {
           </p>
         </div>
         <article className="container">
-          <h2>{question.question}</h2>
+          <h2 dangerouslySetInnerHTML={{__html: question.question}}></h2>
           <div className="btn-container">
             {answers.map((answer) => (
               <button
@@ -67,8 +67,8 @@ function Quiz(params) {
                 className="answer-btn"
                 value={answer}
                 onClick={handleAnswer}
+                dangerouslySetInnerHTML={{__html: answer}}
               >
-                {answer}
               </button>
             ))}
           </div>
