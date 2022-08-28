@@ -8,10 +8,13 @@ import Quiz from './Quiz'
 
 
 function App() {
-  let {loading} = useGlobalContext()
+  let {loading, quiz} = useGlobalContext()
 
   if(loading){
     return <Loading />
+  }
+  if (quiz.show) {
+    return <Quiz />
   }
   return <SetupForm />
 }
