@@ -5,14 +5,10 @@ import Modal from './Modal';
 function Quiz(params) {
   let { quiz, setQuiz } = useGlobalContext();
   let [noOfCorrect, setNoOfCorrect] = useState(0);
-  
 
-
-  let {questions, index, isEnd} = quiz
-
+  let { questions, index, isEnd } = quiz;
 
   let question = questions[index];
-
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -36,10 +32,14 @@ function Quiz(params) {
       setNoOfCorrect(noOfCorrect + 1);
     }
     if (index === questions.length - 1) {
-      setQuiz({...quiz, isEnd : true})
-    }else{
+      setQuiz({ ...quiz, isEnd: true });
+    } else {
       setQuiz({ ...quiz, index: index + 1 });
     }
+  }
+
+  function cancel() {
+    setQuiz({...quiz, show:false})
   }
 
   let answers = [...question.incorrect_answers, question.correct_answer];
@@ -47,7 +47,7 @@ function Quiz(params) {
 
   return (
     <main>
-      <Modal score={noOfCorrect}/>
+      <Modal score={noOfCorrect} />
       <section className="quiz">
         <div className="header">
           <h1>question {index + 1}</h1>
@@ -70,9 +70,14 @@ function Quiz(params) {
             ))}
           </div>
         </article>
-        <button className="next-question" onClick={handleAnswer}>
-          next question
-        </button>
+        <div className="buttons-container">
+          <button className="close-btn" onClick={cancel}>
+            cancel
+          </button>
+          <button className="next-question" onClick={handleAnswer}>
+            next question
+          </button>
+        </div>
       </section>
     </main>
   );
