@@ -31,9 +31,11 @@ function Quiz(params) {
 
   // handle functions
   function handleAnswer(e) {
+    // check if answer is correct
     if (e.target.value === question.correct_answer) {
       setNoOfCorrect(noOfCorrect + 1);
     }
+    // change questions or end quiz if we run of questions
     if (index === questions.length - 1) {
       setQuiz({ ...quiz, isEnd: true });
     } else {
