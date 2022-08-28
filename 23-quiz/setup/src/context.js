@@ -11,6 +11,7 @@ const API_ENDPOINT = 'https://opentdb.com/api.php?';
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
+  // states
   let [query, setQuery] = useState({
     amount: 5,
     category: 'sports',
@@ -25,14 +26,19 @@ const AppProvider = ({ children }) => {
   });
   let [error, setError] = useState(false);
 
+  // effects
+  // get data when loading
   useEffect(() => {
     let url = `${API_ENDPOINT}amount=${query.amount}&category=${
       table[query.category]
     }&difficulty=${query.difficulty}&type=multiple`;
+
+    // only get data while loading 
     if (loading) {
       fetch(url)
         .then((res) => res.json())
         .then((res) => {
+          // if response begin quiz and remove error alert if any
           if (res.response_code === 0) {
             setQuiz({
               ...quiz,
@@ -47,6 +53,7 @@ const AppProvider = ({ children }) => {
           }
         })
         .catch((err) => setError(true))
+        // cancel loading at the end of request
         .finally(() => setLoading(false));
     }
     

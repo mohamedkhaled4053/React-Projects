@@ -3,13 +3,15 @@ import { useGlobalContext } from './context';
 import Modal from './Modal';
 
 function Quiz(params) {
+  // context and states
   let { quiz, setQuiz } = useGlobalContext();
   let [noOfCorrect, setNoOfCorrect] = useState(0);
 
+  // variables
   let { questions, index } = quiz;
-
   let question = questions[index];
 
+  // helper functions
   function shuffle(array) {
     let currentIndex = array.length,
       randomIndex;
@@ -27,6 +29,7 @@ function Quiz(params) {
     return array;
   }
 
+  // handle functions
   function handleAnswer(e) {
     if (e.target.value === question.correct_answer) {
       setNoOfCorrect(noOfCorrect + 1);
@@ -42,9 +45,9 @@ function Quiz(params) {
     setQuiz({...quiz, show:false})
   }
 
+  // prepare answers array
   let answers = [...question.incorrect_answers, question.correct_answer];
   answers = shuffle(answers);
-
   return (
     <main>
       <Modal score={noOfCorrect} />
