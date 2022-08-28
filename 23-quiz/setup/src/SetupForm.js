@@ -37,7 +37,9 @@ const SetupForm = () => {
               onChange={(e) => setQuery({ ...query, category: e.target.value })}
             >
               {Object.keys(table).map((category) => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category} value={category}>
+                  {category}
+                </option>
               ))}
             </select>
           </div>

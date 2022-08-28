@@ -3,7 +3,7 @@ import { useGlobalContext } from './context';
 
 function Quiz(params) {
   let { quiz, setQuiz } = useGlobalContext();
-  let [noOfCorrect, setNoOfCorrect] = useState(0)
+  let [noOfCorrect, setNoOfCorrect] = useState(0);
 
   let question = quiz.questions[quiz.index];
 
@@ -23,12 +23,12 @@ function Quiz(params) {
     }
     return array;
   }
-  
+
   function handleAnswer(e) {
     if (e.target.value === question.correct_answer) {
-      setNoOfCorrect(noOfCorrect + 1)
+      setNoOfCorrect(noOfCorrect + 1);
     }
-    setQuiz({...quiz, index: quiz.index + 1})
+    setQuiz({ ...quiz, index: quiz.index + 1 });
   }
 
   let answers = [...question.incorrect_answers, question.correct_answer];
@@ -37,19 +37,30 @@ function Quiz(params) {
   return (
     <main>
       <section className="quiz">
-        <div className='header'>
-        <h1>question {quiz.index + 1}</h1>
-        <p className="correct-answers">correct answers : {noOfCorrect}/{quiz.questions.length}</p>
+        <div className="header">
+          <h1>question {quiz.index + 1}</h1>
+          <p className="correct-answers">
+            correct answers : {noOfCorrect}/{quiz.questions.length}
+          </p>
         </div>
         <article className="container">
           <h2>{question.question}</h2>
           <div className="btn-container">
             {answers.map((answer) => (
-              <button key={answer} className="answer-btn" value={answer} onClick={handleAnswer}>{answer}</button>
+              <button
+                key={answer}
+                className="answer-btn"
+                value={answer}
+                onClick={handleAnswer}
+              >
+                {answer}
+              </button>
             ))}
           </div>
         </article>
-        <button className="next-question" onClick={handleAnswer}>next question</button>
+        <button className="next-question" onClick={handleAnswer}>
+          next question
+        </button>
       </section>
     </main>
   );

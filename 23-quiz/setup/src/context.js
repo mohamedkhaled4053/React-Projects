@@ -21,7 +21,9 @@ const AppProvider = ({ children }) => {
   let [quiz, setQuiz] = useState({ show: false, questions: [], index: 0 });
 
   useEffect(() => {
-    let url = `${API_ENDPOINT}amount=${query.amount}&category=${table[query.category]}&difficulty=${query.difficulty}&type=multiple`;
+    let url = `${API_ENDPOINT}amount=${query.amount}&category=${
+      table[query.category]
+    }&difficulty=${query.difficulty}&type=multiple`;
     if (loading) {
       fetch(url)
         .then((res) => res.json())
@@ -36,7 +38,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ table, query, setQuery, loading, setLoading, quiz , setQuiz}}
+      value={{ table, query, setQuery, loading, setLoading, quiz, setQuiz }}
     >
       {children}
     </AppContext.Provider>
