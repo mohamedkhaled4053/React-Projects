@@ -3,7 +3,7 @@ import { useGlobalContext } from './context';
 
 const Modal = () => {
   return (
-    <div className="modal-container isOpen">
+    <div className="modal-container">
       <div className="modal-content">
         <h2>congrats!</h2>
         <p>You answered 100% of questions correctly</p>

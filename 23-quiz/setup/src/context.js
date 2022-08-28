@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
     difficulty: 'easy',
   });
   let [loading, setLoading] = useState(false);
-  let [quiz, setQuiz] = useState({ show: false, questions: [], index: 1 });
+  let [quiz, setQuiz] = useState({ show: false, questions: [], index: 0 });
 
   useEffect(() => {
     let url = `${API_ENDPOINT}amount=${query.amount}&category=${table[query.category]}&difficulty=${query.difficulty}&type=multiple`;
