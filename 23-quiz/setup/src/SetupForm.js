@@ -5,7 +5,7 @@ const SetupForm = () => {
   let { table, query, setQuery, setLoading } = useGlobalContext();
 
   function handleSubmit(e) {
-    e.preventDeafault();
+    e.preventDefault();
     setLoading(true);
   }
 

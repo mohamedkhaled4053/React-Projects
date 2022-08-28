@@ -8,8 +8,12 @@ import Quiz from './Quiz'
 
 
 function App() {
-  return <SetupForm />
+  let {loading} = useGlobalContext()
 
+  if(loading){
+    return <Loading />
+  }
+  return <SetupForm />
 }
 
 export default App
