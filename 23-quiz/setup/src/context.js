@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
         .then((res) => {
           if (res.response_code === 0) {
             setLoading(false);
-            setQuiz({ ...quiz, show: true, questions: res.results });
+            setQuiz({ ...quiz, show: true, questions: res.results , isEnd: false, index: 0});
           }
         });
     }
