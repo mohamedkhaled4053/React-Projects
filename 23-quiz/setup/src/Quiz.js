@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from './context';
+import Modal from './Modal';
 
 function Quiz(params) {
   let { quiz, setQuiz } = useGlobalContext();
   let [noOfCorrect, setNoOfCorrect] = useState(0);
+  
 
-  let question = quiz.questions[quiz.index];
+
+  let {questions, index, isEnd} = quiz
+
+
+  let question = questions[index];
+
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -28,7 +35,11 @@ function Quiz(params) {
     if (e.target.value === question.correct_answer) {
       setNoOfCorrect(noOfCorrect + 1);
     }
-    setQuiz({ ...quiz, index: quiz.index + 1 });
+    if (index === questions.length - 1) {
+      setQuiz({...quiz, isEnd : true})
+    }else{
+      setQuiz({ ...quiz, index: index + 1 });
+    }
   }
 
   let answers = [...question.incorrect_answers, question.correct_answer];
@@ -36,11 +47,12 @@ function Quiz(params) {
 
   return (
     <main>
+      <Modal score={noOfCorrect}/>
       <section className="quiz">
         <div className="header">
-          <h1>question {quiz.index + 1}</h1>
+          <h1>question {index + 1}</h1>
           <p className="correct-answers">
-            correct answers : {noOfCorrect}/{quiz.questions.length}
+            correct answers : {noOfCorrect}/{questions.length}
           </p>
         </div>
         <article className="container">
