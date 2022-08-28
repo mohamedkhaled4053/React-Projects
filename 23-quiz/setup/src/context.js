@@ -23,7 +23,6 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     let url = `${API_ENDPOINT}amount=${query.amount}&category=${table[query.category]}&difficulty=${query.difficulty}&type=multiple`;
     if (loading) {
-      console.log(url);
       fetch(url)
         .then((res) => res.json())
         .then((res) => {

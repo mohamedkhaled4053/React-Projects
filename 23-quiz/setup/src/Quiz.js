@@ -45,7 +45,7 @@ function Quiz(params) {
           <h2>{question.question}</h2>
           <div className="btn-container">
             {answers.map((answer) => (
-              <button className="answer-btn" value={answer} onClick={handleAnswer}>{answer}</button>
+              <button key={answer} className="answer-btn" value={answer} onClick={handleAnswer}>{answer}</button>
             ))}
           </div>
         </article>
