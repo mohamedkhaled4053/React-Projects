@@ -22,7 +22,7 @@ const SetupForm = () => {
               id="amount"
               className="form-input"
               min="1"
-              max="50"c
+              max="50"
               value={query.amount}
               onChange={(e) => setQuery({ ...query, amount: e.target.value })}
             />
