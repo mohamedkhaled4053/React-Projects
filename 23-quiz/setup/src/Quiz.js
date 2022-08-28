@@ -3,7 +3,7 @@ import { useGlobalContext } from './context';
 
 function Quiz(params) {
   return (
-    <>
+    <main>
       <div className="modal-container">
         <div className="modal-content">
           <h2>congrats!</h2>
@@ -24,7 +24,7 @@ function Quiz(params) {
         </article>
         <button className="next-question">next question</button>
       </section>
-    </>
+    </main>
   );
 }
 

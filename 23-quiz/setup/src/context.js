@@ -19,9 +19,9 @@ const AppProvider = ({ children }) => {
     category: 'sports',
     difficulty: 'easy'
   })
+  let [loading, setLoading] = useState(false)
 
-
-  return <AppContext.Provider value={{table, query, setQuery}}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{table, query, setQuery, loading, setLoading}}>{children}</AppContext.Provider>
 }
 // make sure use
 export const useGlobalContext = () => {

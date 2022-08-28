@@ -8,9 +8,8 @@ import Quiz from './Quiz'
 
 
 function App() {
-  return <main>
-    <SetupForm />
-  </main>
+  return <SetupForm />
+
 }
 
 export default App
