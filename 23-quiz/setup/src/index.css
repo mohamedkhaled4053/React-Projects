@@ -155,6 +155,10 @@ main {
   border-radius: var(--radius);
   padding: 3rem;
 }
+.quiz .header{
+  display: flex;
+  justify-content: space-between;
+}
 .quiz-small {
   max-width: 500px;
 }

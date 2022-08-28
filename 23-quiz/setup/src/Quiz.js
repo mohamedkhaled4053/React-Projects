@@ -28,7 +28,10 @@ function Quiz(params) {
   return (
     <main>
       <section className="quiz">
+        <div className='header'>
+        <h1>question {quiz.index + 1}</h1>
         <p className="correct-answers">correct answers : 0/0</p>
+        </div>
         <article className="container">
           <h2>{question.question}</h2>
           <div className="btn-container">
