@@ -14,7 +14,14 @@ const url = ''
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value='hello'>{children}</AppContext.Provider>
+  let [query, setQuery] = useState({
+    amount : 5,
+    category: 'sports',
+    difficulty: 'easy'
+  })
+
+
+  return <AppContext.Provider value={{table, query, setQuery}}>{children}</AppContext.Provider>
 }
 // make sure use
 export const useGlobalContext = () => {
