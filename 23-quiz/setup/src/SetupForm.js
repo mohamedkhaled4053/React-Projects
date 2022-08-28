@@ -2,7 +2,7 @@ import React from 'react';
 import { useGlobalContext } from './context';
 
 const SetupForm = () => {
-  let { table, query, setQuery, setLoading } = useGlobalContext();
+  let { table, query, setQuery, setLoading, error } = useGlobalContext();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -59,6 +59,7 @@ const SetupForm = () => {
               <option value="hard">hard</option>
             </select>
           </div>
+          {error && <p className="error">can't generate questions, please try different options</p>}
           <button type="submit" className="submit-btn">
             start
           </button>

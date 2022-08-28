@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect } from 'react';
 
 const table = {
@@ -18,7 +17,13 @@ const AppProvider = ({ children }) => {
     difficulty: 'easy',
   });
   let [loading, setLoading] = useState(false);
-  let [quiz, setQuiz] = useState({ show: false, questions: [], index: 0 , isEnd: false});
+  let [quiz, setQuiz] = useState({
+    show: false,
+    questions: [],
+    index: 0,
+    isEnd: false,
+  });
+  let [error, setError] = useState(false);
 
   useEffect(() => {
     let url = `${API_ENDPOINT}amount=${query.amount}&category=${
@@ -29,16 +34,37 @@ const AppProvider = ({ children }) => {
         .then((res) => res.json())
         .then((res) => {
           if (res.response_code === 0) {
-            setLoading(false);
-            setQuiz({ ...quiz, show: true, questions: res.results , isEnd: false, index: 0});
+            setQuiz({
+              ...quiz,
+              show: true,
+              questions: res.results,
+              isEnd: false,
+              index: 0,
+            });
+            setError(false)
+          } else {
+            setError(true);
           }
-        });
+        })
+        .catch((err) => setError(true))
+        .finally(() => setLoading(false));
     }
+    
+    // eslint-disable-next-line
   }, [loading]);
 
   return (
     <AppContext.Provider
-      value={{ table, query, setQuery, loading, setLoading, quiz, setQuiz }}
+      value={{
+        table,
+        query,
+        setQuery,
+        loading,
+        setLoading,
+        quiz,
+        setQuiz,
+        error,
+      }}
     >
       {children}
     </AppContext.Provider>
