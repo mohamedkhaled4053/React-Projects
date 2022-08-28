@@ -6,7 +6,7 @@ function Quiz(params) {
   let { quiz, setQuiz } = useGlobalContext();
   let [noOfCorrect, setNoOfCorrect] = useState(0);
 
-  let { questions, index, isEnd } = quiz;
+  let { questions, index } = quiz;
 
   let question = questions[index];
 
@@ -14,7 +14,7 @@ function Quiz(params) {
     let currentIndex = array.length,
       randomIndex;
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
