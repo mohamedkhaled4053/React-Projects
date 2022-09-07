@@ -19,7 +19,7 @@ const SingleCocktail = () => {
   }
 
   let drink = drinks[0];
-  let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions } =
+  let { strDrink, strCategory, strAlcoholic, strGlass, strInstructions , strDrinkThumb} =
     drink;
 
   // get any value of any ingredient key
@@ -41,8 +41,8 @@ const SingleCocktail = () => {
       <h2 className="section-title">{strDrink}</h2>
       <div className="drink">
         <img
-          src="https://www.thecocktaildb.com/images/media/drink/xrl66i1493068702.jpg"
-          alt="{strDrink}"
+          src={strDrinkThumb}
+          alt={strDrinkThumb}
         />
         <div className="drink-info">
           <p>
